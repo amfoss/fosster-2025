@@ -1,4 +1,4 @@
-import Tester from '@/components/test';
+import WhyFosster from '@/components/why_attend_foster/why_attend_foster';
 
 export default function Home() {
    return (
@@ -26,7 +26,7 @@ export default function Home() {
             </p>
             <p style={{ fontWeight: 700 }}>Bold with inline style</p>
 
-            <Tester />
+            <WhyFosster />
          </div>
       </div>
    );

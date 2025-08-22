@@ -22,6 +22,7 @@ const eslintConfig = [
       ],
       rules: {
          'prettier/prettier': ['warn'],
+         'no-unused-vars': 1,
       },
       files: ['**/*.{js,ts,jsx,tsx}'],
    },

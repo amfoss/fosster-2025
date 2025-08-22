@@ -1,0 +1,105 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
+
+export default function SlidingCards({ reason }) {
+   const ref = useRef(null);
+   const RISE_LEVEL = 0.5;
+   const cardDesc = useRef(null);
+   const cardMain = useRef(null);
+   const newPercent = useRef(0);
+
+   useEffect(() => {
+      const onScroll = () => {
+         const rect = ref.current.getBoundingClientRect();
+         const linearPercent =
+            rect.top <= 0
+               ? 0
+               : rect.top >= RISE_LEVEL * window.innerHeight - rect.height / 2
+                 ? rect.top < window.innerHeight
+                    ? 1 -
+                      (window.innerHeight - rect.top) /
+                         (RISE_LEVEL * window.innerHeight + rect.height / 2)
+                    : 1
+                 : 0;
+
+         newPercent.current = linearPercent;
+         cardDesc.current.animate(
+            [
+               {
+                  transform: `translateX(${newPercent.current * 50}%)`,
+               },
+            ],
+            {
+               duration: 100,
+               fill: 'forwards',
+            }
+         );
+         cardMain.current.animate(
+            [
+               {
+                  transform: `translateX(${-newPercent.current * 50}%)`,
+               },
+            ],
+            {
+               duration: 100,
+               fill: 'forwards',
+            }
+         );
+      };
+      const observer = new IntersectionObserver(
+         ([entry]) => {
+            if (entry.isIntersecting) {
+               window.addEventListener('scroll', onScroll);
+               console.log('add listener');
+            } else {
+               window.removeEventListener('scroll', onScroll);
+               console.log('remove listener');
+            }
+         },
+         { root: null, rootMargin: '0px', threshold: 0 }
+      );
+
+      const elem_ref = ref.current;
+      onScroll(); // to init positions
+      if (ref.current) {
+         observer.observe(elem_ref);
+         console.log('observing');
+      }
+
+      return () => {
+         if (elem_ref) {
+            observer.unobserve(elem_ref);
+            console.log('not observing');
+         }
+      };
+   }, []);
+   return (
+      <div
+         ref={ref}
+         className="flex min-h-[20vw] flex-1 justify-center rounded-[5vw]"
+      >
+         {/* <div className="absolute z-10 bg-amber-300 text-black">
+            {newPercent.current}
+         </div> */}
+         <div
+            ref={cardDesc}
+            className="flex min-w-[49.5vw] transform rounded-[5vw] bg-[#1b1b1f] p-[5vw] duration-100 will-change-transform"
+         >
+            <div className="flex items-center pr-[5vw]">Icon</div>
+            <div className="flex flex-1 flex-col text-[1.3vw]">
+               <p className="flex-1 font-semibold">{reason.reason.heading}</p>
+               <p className=" ">{reason.reason.desc}</p>
+            </div>
+         </div>
+         <div
+            ref={cardMain}
+            className="flex min-w-[49.5vw] transform rounded-[5vw] bg-[#a5a1ff] duration-100 will-change-transform"
+         >
+            <div className="flex flex-1 items-center justify-center text-black">
+               icon
+            </div>
+         </div>
+      </div>
+   );
+}

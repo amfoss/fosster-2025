@@ -1,5 +1,6 @@
-import localFont from 'next/font/local';
 import './globals.css';
+import localFont from 'next/font/local';
+import ReactLenis from 'lenis/react';
 
 const satoshi = localFont({
    src: [
@@ -18,10 +19,27 @@ const satoshi = localFont({
    display: 'swap',
 });
 
+export const metadata = {
+   title: 'FOSSter - Code, Collaborate and Create',
+   description: 'The Premier Event for Open-Source Contributors',
+};
+
 export default function RootLayout({ children }) {
    return (
       <html lang="en">
-         <body className={`${satoshi.className} antialiased`}>{children}</body>
+         <body className={`${satoshi.className} antialiased`}>
+            <ReactLenis
+               root
+               options={{
+                  lerp: 0.06,
+                  duration: 0.5,
+                  smoothTouch: true,
+                  smoothWheel: true,
+               }}
+            >
+               {children}
+            </ReactLenis>
+         </body>
       </html>
    );
 }

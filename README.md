@@ -12,7 +12,9 @@ Clone the repository:
 git clone https://github.com/amfoss/fosster-2025.git
 cd fosster-2025
 ```
+
 Install the dependencies
+
 ```bash
 npm install
 # or

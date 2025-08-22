@@ -1,0 +1,101 @@
+'use client';
+
+import React, { useEffect, useRef } from 'react';
+import ArrowUp from '@/components/svg/arrow';
+
+export default function CircularText({
+   text = 'NO TEXT NO TEXT ',
+   radius = 4.3,
+}) {
+   const letters = text.split('');
+   const angleStep = 360 / letters.length;
+   const ref = useRef(null);
+   const arrowRef = useRef(null);
+   const linearPercent = useRef(0);
+   const ROTATE_STEP = 300;
+
+   useEffect(() => {
+      const onScroll = () => {
+         linearPercent.current = (scrollY % ROTATE_STEP) / ROTATE_STEP;
+         ref.current.animate(
+            [
+               {
+                  transform: `rotate(${linearPercent.current * 360}deg)`,
+               },
+            ],
+            {
+               duration: 100,
+               fill: 'forwards',
+            }
+         );
+         arrowRef.current.animate(
+            [
+               {
+                  transform: `rotate(${-linearPercent.current * 360}deg)`,
+               },
+            ],
+            {
+               duration: 100,
+               fill: 'forwards',
+            }
+         );
+      };
+      const observer = new IntersectionObserver(
+         ([entry]) => {
+            if (entry.isIntersecting) {
+               window.addEventListener('scroll', onScroll);
+               console.log('add listener');
+            } else {
+               window.removeEventListener('scroll', onScroll);
+               console.log('remove listener');
+            }
+         },
+         { root: null, rootMargin: '0px', threshold: 0 }
+      );
+
+      const elem_ref = ref.current;
+      if (ref.current) {
+         observer.observe(elem_ref);
+         console.log('observing');
+      }
+
+      return () => {
+         if (elem_ref) {
+            observer.unobserve(elem_ref);
+            console.log('not observing');
+         }
+      };
+   }, []);
+
+   return (
+      <div
+         ref={ref}
+         className={`relative flex size-[${10.2}vw] items-center justify-center text-[1.3vw] font-bold`}
+      >
+         {/* <div className="absolute bg-yellow-300 text-black">
+            {linearPercent.current}
+         </div> */}
+         <div
+            ref={arrowRef}
+            className="flex min-h-[10vw] min-w-[10vw] flex-1 p-[4vw]"
+         >
+            <ArrowUp />
+         </div>
+         {letters.map((letter, i) => (
+            <span
+               key={i}
+               className="absolute mr-[-1vw]"
+               style={{
+                  transform: `
+              rotate(${i * angleStep}deg)
+              translateY(-${radius}vw)
+            `,
+                  transformOrigin: '0 50%',
+               }}
+            >
+               {letter}
+            </span>
+         ))}
+      </div>
+   );
+}

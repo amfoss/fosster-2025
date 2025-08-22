@@ -1,0 +1,66 @@
+import CircularText from '@/components/ui/circular_text';
+import SlidingCards from '@/components/why_attend_foster/sliding_cards';
+
+export default function WhyFosster() {
+   const reasons = [
+      {
+         icon: '',
+         reason: {
+            heading: 'Connection',
+            desc: 'Connect with open-source leaders and innovators',
+         },
+      },
+      {
+         icon: '',
+         reason: {
+            heading: 'Learn',
+            desc: 'Learn from real-world projects and expert contributors',
+         },
+      },
+      {
+         icon: '',
+         reason: {
+            heading: 'Experience',
+            desc: 'Gain hands-on experience with modern tools and tech',
+         },
+      },
+      {
+         icon: '',
+         reason: {
+            heading: 'Explore',
+            desc: 'Discover career opportunities and grow your network',
+         },
+      },
+      {
+         icon: '',
+         reason: {
+            heading: 'Community',
+            desc: 'Be part of a global, collaborative community',
+         },
+      },
+   ];
+   return (
+      <div className="m-[0.5vw] flex flex-col gap-y-[0.5vw] text-[#a5a1ff]">
+         <div className="flex rounded-[5vw] bg-[#1b1b1f] p-[2.5vw]">
+            <div className="flex flex-col gap-y-[3vw] p-[2.5vw]">
+               <p className="font-bold">WHY ATTEND FOSSTER</p>
+               <p className="max-w-[75vw] text-[6.5vw] leading-[1] font-medium tracking-[-2px]">
+                  FOSSter offers an unparalleled <i>experience</i> designed to
+                  empower the <i>FOSS</i> community.
+               </p>
+            </div>
+            <div className="flex flex-1 items-end justify-end">
+               <CircularText text={'SEE EVENTS SEE EVENTS '} radius={4.3} />
+            </div>
+         </div>
+
+         <div className="flex flex-col gap-y-[0.5vw]">
+            {reasons.map((id, index) => (
+               <div key={index}>
+                  <SlidingCards reason={reasons[index]} />
+               </div>
+            ))}
+         </div>
+      </div>
+   );
+}
