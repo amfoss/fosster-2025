@@ -44,25 +44,21 @@ export default function CircularText({
          ([entry]) => {
             if (entry.isIntersecting) {
                window.addEventListener('scroll', onScroll);
-               console.log('add listener');
             } else {
                window.removeEventListener('scroll', onScroll);
-               console.log('remove listener');
             }
          },
          { root: null, rootMargin: '0px', threshold: 0 }
       );
 
       const elem_ref = ref.current;
-      if (ref.current) {
+      if (elem_ref) {
          observer.observe(elem_ref);
-         console.log('observing');
       }
 
       return () => {
          if (elem_ref) {
             observer.unobserve(elem_ref);
-            console.log('not observing');
          }
       };
    }, []);
@@ -70,7 +66,7 @@ export default function CircularText({
    return (
       <div
          ref={ref}
-         className={`relative flex size-[${10.2}vw] items-center justify-center text-[1.3vw] font-bold`}
+         className={`relative flex size-[${10.2}vw] items-center justify-center overflow-hidden text-[1.3vw] font-bold`}
       >
          {/* <div className="absolute bg-yellow-300 text-black">
             {linearPercent.current}

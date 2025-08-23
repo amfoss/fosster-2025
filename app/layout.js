@@ -40,6 +40,7 @@ export default function RootLayout({ children }) {
             >
                <NavBar />
                {children}
+               <div id="end" className="min-h-[90vh]"></div>
             </ReactLenis>
          </body>
       </html>

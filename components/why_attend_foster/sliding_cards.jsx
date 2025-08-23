@@ -51,10 +51,8 @@ export default function SlidingCards({ reason }) {
          ([entry]) => {
             if (entry.isIntersecting) {
                window.addEventListener('scroll', onScroll);
-               console.log('add listener');
             } else {
                window.removeEventListener('scroll', onScroll);
-               console.log('remove listener');
             }
          },
          { root: null, rootMargin: '0px', threshold: 0 }
@@ -62,15 +60,13 @@ export default function SlidingCards({ reason }) {
 
       const elem_ref = ref.current;
       onScroll(); // to init positions
-      if (ref.current) {
+      if (elem_ref) {
          observer.observe(elem_ref);
-         console.log('observing');
       }
 
       return () => {
          if (elem_ref) {
             observer.unobserve(elem_ref);
-            console.log('not observing');
          }
       };
    }, []);
