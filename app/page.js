@@ -1,9 +1,11 @@
+import Hero from '@/components/hero/hero';
 import WhyFosster from '@/components/why_attend_foster/why_attend_foster';
 
 export default function Home() {
    return (
-      <div id="hero" className="min-h-screen">
+      <div id="top" className="min-h-screen">
          <div className="space-y-4 p-8">
+            <Hero />
             <p className="text-5xl">Welcome to Fosster 2025, </p>
             <p className="text-5xl font-bold">Testing fonts now (font-bold)</p>
 

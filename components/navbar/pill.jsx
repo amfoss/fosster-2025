@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 
-export default function Pill() {
+export default function Pill({ fill }) {
    const options = [
       { label: 'Register', link: '/' },
       { label: 'Now', link: '/' },
@@ -11,9 +11,29 @@ export default function Pill() {
    const highlightRef = useRef(null);
    const RISE_LEVEL = 0.1;
    const newPercent = useRef(0);
+   const timeoutRef = useRef(null); // bad practice
 
    const handlePillHighlight = () => {
       if (!containerRef.current || !highlightRef.current) return;
+
+      if (fill) {
+         expandHighlight();
+      } else {
+         updateActiveHighlight();
+      }
+   };
+
+   const expandHighlight = () => {
+      if (timeoutRef.current) {
+         clearTimeout(timeoutRef.current);
+         timeoutRef.current = null;
+      }
+      const contain = document.getElementById('pill-target');
+      highlightRef.current.style.width = `${contain.offsetWidth}px`;
+      highlightRef.current.style.transform = `translateX(0px)`;
+   };
+
+   const updateActiveHighlight = () => {
       const activeEl = containerRef.current.children[active + 1];
       if (activeEl) {
          highlightRef.current.style.width = `${activeEl.offsetWidth}px`;
@@ -22,9 +42,21 @@ export default function Pill() {
    };
 
    useEffect(() => {
+      console.log(fill);
       handlePillHighlight();
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [active]);
+
+   useEffect(() => {
+      handlePillHighlight();
+      if (!fill) {
+         timeoutRef.current = setTimeout(() => {
+            updateActiveHighlight();
+            timeoutRef.current = null;
+         }, 300);
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [fill]);
 
    useEffect(() => {
       window.addEventListener('resize', handlePillHighlight);
@@ -90,25 +122,27 @@ export default function Pill() {
    }, []);
 
    return (
-      <div
-         className="relative inline-flex rounded-full bg-gray-400/15 backdrop-blur-xl"
-         ref={containerRef}
-      >
-         <span
-            ref={highlightRef}
-            className="backdrop-xl absolute top-0 left-0 h-full rounded-full bg-blue-900/50 transition-all duration-300"
-         />
+      <>
+         <div
+            className={`relative inline-flex overflow-hidden rounded-full bg-gray-400/15 backdrop-blur-xl ${fill ? 'space-x-[-5.4vw] px-[1.9vw]' : ''}`}
+            ref={containerRef}
+         >
+            <span
+               ref={highlightRef}
+               className="backdrop-xl absolute top-0 left-0 h-full rounded-full bg-blue-900/50 transition-all duration-300"
+            />
 
-         {options.map((option, i) => (
-            <Link
-               key={i}
-               onMouseEnter={() => setActive(i)}
-               className="relative z-10 px-[3vw] py-[2vw]"
-               href={option.link}
-            >
-               {option.label}
-            </Link>
-         ))}
-      </div>
+            {options.map((option, i) => (
+               <Link
+                  key={i}
+                  onMouseEnter={() => setActive(i)}
+                  className={`relative z-10 px-[3vw] py-[2vw]`}
+                  href={option.link}
+               >
+                  {option.label}
+               </Link>
+            ))}
+         </div>
+      </>
    );
 }
