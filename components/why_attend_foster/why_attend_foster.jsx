@@ -40,7 +40,10 @@ export default function WhyFosster() {
       },
    ];
    return (
-      <div className="m-[0.5vw] flex flex-col gap-y-[0.5vw] text-[#a5a1ff]">
+      <div
+         id="why-attend"
+         className="m-[0.5vw] flex flex-col gap-y-[0.5vw] text-[#a5a1ff]"
+      >
          <div className="flex rounded-[5vw] bg-[#1b1b1f] p-[2.5vw]">
             <div className="flex flex-col gap-y-[3vw] p-[2.5vw]">
                <p className="font-bold">WHY ATTEND FOSSTER</p>

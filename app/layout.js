@@ -1,6 +1,7 @@
 import './globals.css';
 import localFont from 'next/font/local';
 import ReactLenis from 'lenis/react';
+import NavBar from '@/components/navbar/navbar';
 
 const satoshi = localFont({
    src: [
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
                   smoothWheel: true,
                }}
             >
+               <NavBar />
                {children}
             </ReactLenis>
          </body>
