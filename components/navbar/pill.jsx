@@ -12,11 +12,14 @@ export default function Pill({ fill }) {
    const RISE_LEVEL = 0.1;
    const newPercent = useRef(0);
    const timeoutRef = useRef(null); // bad practice
+   // Direct DOM mutations (appendChild in handlePillPlacement()) cause the `fill` state to reset without re-render or hooks trigger.
+   // Using this ref prevents losing the correct `fill` value. Flex-tape fix
+   const fillGaurd = useRef(null);
 
    const handlePillHighlight = () => {
       if (!containerRef.current || !highlightRef.current) return;
 
-      if (fill) {
+      if (fillGaurd.current) {
          expandHighlight();
       } else {
          updateActiveHighlight();
@@ -29,6 +32,8 @@ export default function Pill({ fill }) {
          timeoutRef.current = null;
       }
       const contain = document.getElementById('pill-target');
+      if (!contain) return;
+
       highlightRef.current.style.width = `${contain.offsetWidth}px`;
       highlightRef.current.style.transform = `translateX(0px)`;
    };
@@ -48,6 +53,7 @@ export default function Pill({ fill }) {
    }, [active]);
 
    useEffect(() => {
+      fillGaurd.current = fill;
       handlePillHighlight();
       if (!fill) {
          timeoutRef.current = setTimeout(() => {
@@ -122,27 +128,25 @@ export default function Pill({ fill }) {
    }, []);
 
    return (
-      <>
-         <div
-            className={`relative inline-flex overflow-hidden rounded-full bg-gray-400/15 backdrop-blur-xl ${fill ? 'space-x-[-5.4vw] px-[1.9vw]' : ''}`}
-            ref={containerRef}
-         >
-            <span
-               ref={highlightRef}
-               className="backdrop-xl absolute top-0 left-0 h-full rounded-full bg-blue-900/50 transition-all duration-300"
-            />
+      <div
+         className={`relative inline-flex overflow-hidden rounded-full bg-gray-400/15 backdrop-blur-xl ${fill ? 'space-x-[-5.4vw] px-[1.9vw]' : ''}`}
+         ref={containerRef}
+      >
+         <span
+            ref={highlightRef}
+            className="backdrop-xl absolute top-0 left-0 h-full rounded-full bg-blue-900/50 transition-all duration-300"
+         />
 
-            {options.map((option, i) => (
-               <Link
-                  key={i}
-                  onMouseEnter={() => setActive(i)}
-                  className={`relative z-10 px-[3vw] py-[2vw]`}
-                  href={option.link}
-               >
-                  {option.label}
-               </Link>
-            ))}
-         </div>
-      </>
+         {options.map((option, i) => (
+            <Link
+               key={i}
+               onMouseEnter={() => setActive(i)}
+               className={`relative z-10 px-[3vw] py-[2vw]`}
+               href={option.link}
+            >
+               {option.label}
+            </Link>
+         ))}
+      </div>
    );
 }

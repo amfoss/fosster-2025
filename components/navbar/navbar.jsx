@@ -5,13 +5,12 @@ import { scrollToHash } from '@/app/_utils/helpers';
 import Pill from './pill';
 
 export default function NavBar() {
-   const [fill, setFill] = useState(true);
+   const [fill, setFill] = useState(false);
    const pillRef = useRef(null);
    const navTargetRef = useRef(null);
 
    const handlePillPlacement = () => {
       if (!pillRef.current || !navTargetRef.current) return;
-
       const targetRef = document.getElementById('pill-target');
       if (!targetRef) return;
 
@@ -22,7 +21,6 @@ export default function NavBar() {
       const firstFontSize = window.getComputedStyle(pillRef.current).fontSize;
       const targetFontSize = window.getComputedStyle(destination).fontSize;
       destination.appendChild(pillRef.current);
-
       const lastRect = pillRef.current.getBoundingClientRect();
 
       const dx = firstRect.left - lastRect.left;
@@ -33,9 +31,12 @@ export default function NavBar() {
          [
             {
                transform: `translate(${dx}px, ${dy}px)`,
-               fontSize: firstFontSize,
+               fontSize: `${(firstFontSize * 100) / window.innerWidth}vw`, // to preserve unit across screen zooms
             },
-            { transform: 'translate(0,0)', fontSize: targetFontSize },
+            {
+               transform: 'translate(0,0)',
+               fontSize: `${(targetFontSize * 100) / window.innerWidth}vw`,
+            },
          ],
          {
             duration: 400,
@@ -58,6 +59,8 @@ export default function NavBar() {
 
    useEffect(() => {
       const heroRef = document.getElementById('hero');
+      if (!heroRef) return;
+
       handlePillPlacement();
 
       const observer = new IntersectionObserver(
