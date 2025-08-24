@@ -1,5 +1,6 @@
 import Hero from '@/components/hero/hero';
 import WhyFosster from '@/components/why_attend_foster/why_attend_foster';
+import StackedCards from '@/components/divs_top_on_bottem/stack_divs';
 
 export default function Home() {
    return (
@@ -116,6 +117,7 @@ export default function Home() {
                </div>
             </div>
          </div>
+         <StackedCards />
       </div>
    );
 }
