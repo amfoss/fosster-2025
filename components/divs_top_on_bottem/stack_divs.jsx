@@ -17,7 +17,7 @@ const Card = ({ number, title, description, color, i }) => {
 
 
         <div className="flex-1 flex flex-col">
-          <h2 className="text-2xl font-semibold text-gray-900">{title}</h2>
+          <h2 className="text-3xl font-semibold text-gray-900">{title}</h2>
           <p className="mt-2 text-base text-gray-800">{description}</p>
         </div>
       </div>

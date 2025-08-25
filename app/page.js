@@ -1,6 +1,7 @@
 import Hero from '@/components/hero/hero';
 import WhyFosster from '@/components/why_attend_foster/why_attend_foster';
 import StackedCards from '@/components/divs_top_on_bottem/stack_divs';
+import CircularText from '@/components/ui/circular_text';
 
 export default function Home() {
    return (
@@ -70,10 +71,8 @@ export default function Home() {
                   </div>
 
                   <div className="flex flex-1 items-end justify-end">
-                     <div className="flex h-[8vw] w-[8vw] items-center justify-center rounded-full border border-gray-400">
-                        <span className="text-[0.8vw] text-gray-400">
-                           somethiing with down arrow
-                        </span>
+                     <div>
+                        <CircularText text={'CONTACT US CONTACT US '} radius={4.3} />
                      </div>
                   </div>
                </div>
