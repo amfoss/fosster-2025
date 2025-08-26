@@ -1,4 +1,5 @@
 import Hero from '@/components/hero/hero';
+import Venue from '@/components/venue/venue';
 import WhyFosster from '@/components/why_attend_foster/why_attend_foster';
 
 export default function Home() {
@@ -29,6 +30,7 @@ export default function Home() {
             <p style={{ fontWeight: 700 }}>Bold with inline style</p>
          </div>
          <WhyFosster />
+         <Venue/>
       </div>
    );
 }
