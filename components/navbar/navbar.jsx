@@ -102,7 +102,7 @@ export default function NavBar() {
                   }}
                   className="flex items-center justify-center rounded-full bg-gray-500/15 px-[1.75vw] py-[0.6vw] backdrop-blur-xl"
                >
-                  foster
+                  fosster
                </button>
             </div>
             <div className="flex flex-1 items-center justify-center pt-[0.75vw]">
@@ -137,7 +137,7 @@ export default function NavBar() {
                   }}
                   className="flex items-center justify-center rounded-full bg-gray-500/15 px-[1.75vw] py-[0.6vw] backdrop-blur-xl"
                >
-                  foster
+                  fosster
                </button>
                <button
                   onClick={() => {

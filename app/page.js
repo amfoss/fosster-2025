@@ -1,6 +1,7 @@
 import Events from '@/components/events/events';
 import Hero from '@/components/hero/hero';
 import ActionCards from '@/components/who_can_attend_fosster/action_cards';
+import Venue from '@/components/venue/venue';
 import WhyFosster from '@/components/why_attend_foster/why_attend_foster';
 import StackedCards from '@/components/divs_top_on_bottem/stack_divs';
 import ContactUs from '@/components/contact_us/contact_us';
@@ -33,10 +34,11 @@ export default function Home() {
             <p style={{ fontWeight: 700 }}>Bold with inline style</p>
          </div>
          <WhyFosster />
-         <StackedCards />
-         <ContactUs />
          <Events />
          <ActionCards />
+         <StackedCards />
+         <Venue/>
+         <ContactUs />
       </div>
    );
 }
