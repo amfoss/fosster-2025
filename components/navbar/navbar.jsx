@@ -3,11 +3,17 @@
 import { useEffect, useRef, useState } from 'react';
 import { scrollToHash } from '@/app/_utils/helpers';
 import Pill from './pill';
+import Link from 'next/link';
 
 export default function NavBar() {
    const [fill, setFill] = useState(false);
    const pillRef = useRef(null);
    const navTargetRef = useRef(null);
+   const navLinks = [
+      { label: 'about', targetHash: 'why-attend' },
+      { label: 'venue', link: '/' },
+      { label: 'contact', targetHash: 'contact-us' },
+   ];
 
    const handlePillPlacement = () => {
       if (!pillRef.current || !navTargetRef.current) return;
@@ -100,30 +106,29 @@ export default function NavBar() {
                </button>
             </div>
             <div className="flex flex-1 items-center justify-center pt-[0.75vw]">
-               <button
-                  onClick={() => {
-                     scrollToHash('why-attend');
-                  }}
-                  className="flex items-center justify-center rounded-full bg-gray-500/15 px-[1.75vw] py-[0.6vw] backdrop-blur-xl"
-               >
-                  about
-               </button>
-               <button
-                  onClick={() => {
-                     scrollToHash('hero');
-                  }}
-                  className="flex items-center justify-center rounded-full bg-gray-500/15 px-[1.75vw] py-[0.6vw] backdrop-blur-xl"
-               >
-                  sponsor
-               </button>
-               <button
-                  onClick={() => {
-                     scrollToHash('hero');
-                  }}
-                  className="flex items-center justify-center rounded-full bg-gray-500/15 px-[1.75vw] py-[0.6vw] backdrop-blur-xl"
-               >
-                  venue
-               </button>
+               {navLinks.map((elem, index) =>
+                  elem.link === undefined ? (
+                     <button
+                        key={index}
+                        onClick={() => {
+                           elem.targetHash != undefined
+                              ? scrollToHash(elem.targetHash)
+                              : null;
+                        }}
+                        className="flex items-center justify-center rounded-full bg-gray-500/15 px-[1.75vw] py-[0.6vw] backdrop-blur-xl"
+                     >
+                        {elem.label}
+                     </button>
+                  ) : (
+                     <Link
+                        className="flex items-center justify-center rounded-full bg-gray-500/15 px-[1.75vw] py-[0.6vw] backdrop-blur-xl"
+                        key={index}
+                        href={elem.link}
+                     >
+                        {elem.label}
+                     </Link>
+                  )
+               )}
             </div>
             <div className="flex flex-1 justify-end pt-[0.75vw] pr-[0.75vw]">
                <button
