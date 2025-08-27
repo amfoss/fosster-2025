@@ -1,11 +1,12 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import ArrowUp from '@/components/svg/arrow';
+import ArrowDown from '@/components/svg/arrow';
 
 export default function CircularText({
    text = 'NO TEXT NO TEXT ',
    radius = 4.3,
+   children = <ArrowDown />,
 }) {
    const letters = text.split('');
    const angleStep = 360 / letters.length;
@@ -75,7 +76,7 @@ export default function CircularText({
             ref={arrowRef}
             className="flex min-h-[10vw] min-w-[10vw] flex-1 p-[4vw]"
          >
-            <ArrowUp />
+            {children}
          </div>
          {letters.map((letter, i) => (
             <span
