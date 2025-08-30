@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
+import ArrowDown from '../svg/arrow';
 
 export default function ActionCards() {
    const sigmas = [
@@ -55,10 +56,10 @@ export default function ActionCards() {
    };
 
    return (
-      <main className="relative flex flex-col overflow-hidden bg-[#1b1b1f] p-8 text-white md:p-12 lg:p-16">
+      <div className="relative flex min-h-screen flex-col overflow-hidden bg-[#1b1b1f] p-8 text-white md:p-12 lg:p-16">
          {/* Header */}
-         <header className="mb-10 flex w-full items-start justify-between">
-            <div className="z-10 flex items-start gap-4 md:gap-8">
+         <header className="mb-10 flex w-full">
+            <div className="z-10 flex w-full gap-[2.5vw]">
                <div className="h-[80px] w-[80px] flex-shrink-0 text-gray-500 md:h-[100px] md:w-[100px]">
                   <Image
                      src={'asterisks_symbol.svg'}
@@ -67,42 +68,40 @@ export default function ActionCards() {
                      alt="Asterisk"
                   />
                </div>
-               <div>
-                  <h1 className="text-5xl leading-tight font-bold tracking-tight md:text-6xl">
-                     Who Should
+               <div className="flex flex-1">
+                  <h1 className="flex-1 text-[5vw] leading-tight font-bold tracking-tight">
+                     Who Should <br />
+                     <i>attend</i> FOSSTER
                   </h1>
-                  <h1 className="text-5xl leading-tight font-bold tracking-tight italic md:text-6xl">
-                     attend
-                  </h1>
-                  <h1 className="text-5xl leading-tight font-bold tracking-tight md:text-6xl">
-                     FOSSTER
-                  </h1>
+                  <p className="max-w-[30vw] text-[1.5vw]">
+                     Anyone can attend honestly, I just want the monaayyy ;{')'}
+                  </p>
                </div>
             </div>
          </header>
 
-         <div className="mt-12 flex h-full w-full flex-grow flex-col items-end justify-center lg:mt-0 lg:flex-row lg:justify-start">
+         <div className="flex flex-1 gap-x-[2.5vw]">
             {/* Desktop Arrows */}
-            <div className="hidden h-full w-1/4 flex-col items-baseline justify-end pb-16 lg:flex">
-               <div className="mt-4 flex items-baseline gap-10">
+            <div className="flex flex-col justify-end">
+               <div className="flex gap-x-[1vw]">
                   <button
                      onClick={handlePrev}
-                     className="flex h-30 w-30 items-center justify-center rounded-full bg-[#d9d9d9] transition-colors hover:bg-gray-400"
+                     className="flex size-[6.7vw] rotate-90 items-center justify-center rounded-full bg-[#d9d9d9] p-[2vw] text-black transition-colors hover:bg-gray-400"
                   >
-                     <span className="font-mono text-6xl text-black">←</span>
+                     <ArrowDown />
                   </button>
                   <button
                      onClick={handleNext}
-                     className="flex h-30 w-30 items-center justify-center rounded-full bg-[#d9d9d9] transition-colors hover:bg-gray-400"
+                     className="flex size-[6.7vw] -rotate-90 items-center justify-center rounded-full bg-[#d9d9d9] p-[2vw] text-black transition-colors hover:bg-gray-400"
                   >
-                     <span className="font-mono text-6xl text-black">→</span>
+                     <ArrowDown />
                   </button>
                </div>
             </div>
 
-            <div className="relative flex w-full grow flex-col overflow-hidden">
+            <div className="relative flex w-full grow flex-col overflow-hidden rounded-[2.5vw]">
                <div
-                  className="flex px-10 transition-transform duration-500 ease-in-out"
+                  className="flex flex-1 gap-x-[0.5vw] px-[0.5vw] transition-transform duration-500 ease-in-out"
                   style={{
                      transform: `translateX(-${page * 50}%)`,
                      width: `${totalPages * 100}%`,
@@ -111,7 +110,7 @@ export default function ActionCards() {
                   {Array.from({ length: totalPages }).map((_, pageIndex) => (
                      <div
                         key={pageIndex}
-                        className="grid w-full flex-shrink-0 grid-cols-1 gap-6 md:grid-cols-3"
+                        className="flex w-full flex-shrink-0 gap-x-[0.5vw]"
                         style={{ width: `${100 / totalPages}%` }}
                      >
                         {sigmas
@@ -122,15 +121,15 @@ export default function ActionCards() {
                            .map((item, idx) => (
                               <div
                                  key={idx}
-                                 className="flex grow flex-col rounded-3xl bg-[#a5a1ff] p-8 shadow-lg"
+                                 className="flex flex-1 grow flex-col overflow-hidden rounded-[2.5vw] bg-[#a5a1ff] p-[2.5vw]"
                               >
-                                 <div className="relative mb-20 w-full">
-                                    <div className="h-40 w-40 bg-black"></div>
-                                 </div>
-                                 <h2 className="mb-4 text-3xl font-bold text-black">
+                                 <h2 className="text-[1.7vw] font-bold text-black">
                                     {item.title}
                                  </h2>
-                                 <p className="text-xl leading-relaxed text-gray-700">
+                                 <div className="m-[2.5vw] flex justify-center">
+                                    <div className="h-40 w-40 bg-black"></div>
+                                 </div>
+                                 <p className="flex-1 text-xl leading-relaxed text-gray-700">
                                     {item.description}
                                  </p>
                               </div>
@@ -156,6 +155,6 @@ export default function ActionCards() {
                <span className="font-mono text-3xl text-black">→</span>
             </button>
          </div>
-      </main>
+      </div>
    );
 }
