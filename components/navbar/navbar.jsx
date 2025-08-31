@@ -12,17 +12,15 @@ export default function NavBar() {
    const navTargetRef = useRef(null);
    const pathname = usePathname();
    const navLinks = [
-      { label: 'home', link: '/' },
-      { label: 'about', targetHash: 'why-attend' },
+      { label: 'home', link: '/#hero' },
+      { label: 'about', link: '/#about' },
       { label: 'venue', link: '/venue' },
-      { label: 'contact', targetHash: 'contact-us' },
+      { label: 'contact', link: '/#contact-us' },
    ];
 
    const handlePillPlacement = () => {
-      console.log("=====================pillRef",)
       if (!pillRef.current || !navTargetRef.current) return;
       const targetRef = document.getElementById('pill-target');
-      console.log("=====================", targetRef)
       if (!targetRef) return;
 
       const firstRect = pillRef.current.getBoundingClientRect();
@@ -60,7 +58,6 @@ export default function NavBar() {
          // this is for letting container’s CSS take over
          pillRef.current.style.transform = '';
          pillRef.current.style.fontSize = '';
-
       };
    };
 

@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { usePill } from '@/app/_contexts/pill';
 import { useCallback } from 'react';
 
-const MapComponent = dynamic(() => import('@/components/venue/MapComponent'), {
+const MapComponent = dynamic(() => import('@/components/venue/map_component'), {
    ssr: false,
 });
 
