@@ -11,6 +11,7 @@ export default function SlidingCards({ reason }) {
 
    useEffect(() => {
       const onScroll = () => {
+         if (ref.current == null) return;
          const rect = ref.current.getBoundingClientRect();
          const linearPercent =
             rect.top <= 0

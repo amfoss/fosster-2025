@@ -1,6 +1,23 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
+
 export default function Hero() {
+   const pathname = usePathname();
+   const [isHidden, setIsHidden] = useState(false);
+   useEffect(() => {
+      if (pathname != '/') {
+         setIsHidden(true);
+      } else {
+         setIsHidden(false);
+      }
+   }, [pathname]);
    return (
-      <div id="hero" className="flex min-h-screen items-center justify-center">
+      <div
+         id="hero"
+         className={`${isHidden ? 'hidden' : ''} flex min-h-screen items-center justify-center`}
+      >
          <div className="text-[4.5vw] font-bold tracking-tight">
             <p className="leading-[2vw]">CODE-COLLABORATE</p>
             <div className="flex">

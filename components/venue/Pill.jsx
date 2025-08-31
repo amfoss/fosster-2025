@@ -131,7 +131,7 @@ export default function PillTabs({ fill, options, onTabChange }) {
                onMouseEnter={() => setActive(i)}
                onClick={() => {
                   setActive(i);
-                  onTabChange(option.value); 
+                  onTabChange(option.value);
                }}
                className={`relative z-10 px-[3vw] py-[1vw] text-lg font-semibold text-white`}
             >

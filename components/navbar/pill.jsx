@@ -1,11 +1,9 @@
 import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePill } from '@/app/_contexts/pill';
 
 export default function Pill({ fill }) {
-   const options = [
-      { label: 'Register', link: '/' },
-      { label: 'Now', link: '/' },
-   ];
+   const { options, handleClick, selected, setSelected, persist } = usePill();
    const [active, setActive] = useState(0);
    const containerRef = useRef(null);
    const highlightRef = useRef(null);
@@ -46,11 +44,18 @@ export default function Pill({ fill }) {
       }
    };
 
+   const resetHighlight = () => {
+      const activeEl = containerRef.current.children[selected + 1];
+      if (activeEl) {
+         highlightRef.current.style.width = `${activeEl.offsetWidth}px`;
+         highlightRef.current.style.transform = `translateX(${activeEl.offsetLeft}px)`;
+      }
+   };
+
    useEffect(() => {
-      console.log(fill);
       handlePillHighlight();
       // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [active]);
+   }, [active, options]);
 
    useEffect(() => {
       fillGaurd.current = fill;
@@ -131,22 +136,44 @@ export default function Pill({ fill }) {
       <div
          className={`relative inline-flex overflow-hidden rounded-full bg-gray-400/15 backdrop-blur-xl ${fill ? 'space-x-[-5.4vw] px-[1.9vw]' : ''}`}
          ref={containerRef}
+         onMouseLeave={() => {
+            if (!fillGaurd.current && persist) {
+               resetHighlight();
+               setActive(selected);
+            }
+         }}
       >
          <span
             ref={highlightRef}
             className="backdrop-xl absolute top-0 left-0 h-full rounded-full bg-blue-900/50 transition-all duration-300"
          />
 
-         {options.map((option, i) => (
-            <Link
-               key={i}
-               onMouseEnter={() => setActive(i)}
-               className={`relative z-10 px-[3vw] py-[2vw]`}
-               href={option.link}
-            >
-               {option.label}
-            </Link>
-         ))}
+         {options.map((option, i) =>
+            option.href != undefined ? (
+               <Link
+                  key={i}
+                  onMouseEnter={() => setActive(i)}
+                  className={`relative z-10 px-[3vw] py-[2vw]`}
+                  href={option.link}
+               >
+                  {option.label}
+               </Link>
+            ) : (
+               <button
+                  key={i}
+                  onMouseEnter={() => setActive(i)}
+                  onClick={() => {
+                     setSelected(i);
+                     if (option.value !== undefined) {
+                        handleClick(option.value);
+                     }
+                  }}
+                  className={`relative z-10 px-[3vw] py-[2vw]`}
+               >
+                  {option.label}
+               </button>
+            )
+         )}
       </div>
    );
 }

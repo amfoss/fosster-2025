@@ -2,6 +2,8 @@ import './globals.css';
 import localFont from 'next/font/local';
 import ReactLenis from 'lenis/react';
 import NavBar from '@/components/navbar/navbar';
+import { PillProvider } from './_contexts/pill';
+import Hero from '@/components/hero/hero';
 
 const satoshi = localFont({
    src: [
@@ -38,9 +40,12 @@ export default function RootLayout({ children }) {
                   smoothWheel: true,
                }}
             >
-               <NavBar />
-               {children}
-               <div id="end" className="min-h-[90vh]"></div>
+               <PillProvider>
+                  <NavBar />
+                  <Hero />
+                  {children}
+                  <div id="end" className="min-h-[90vh]"></div>
+               </PillProvider>
             </ReactLenis>
          </body>
       </html>
