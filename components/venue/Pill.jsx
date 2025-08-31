@@ -1,17 +1,12 @@
 import { useRef, useState, useEffect } from 'react';
-import Link from 'next/link';
-import { usePill } from '@/app/_contexts/pill';
 
-export default function Pill({ fill }) {
-   const { options, handleClick, selected, setSelected, persist } = usePill();
+export default function PillTabs({ fill, options, onTabChange }) {
    const [active, setActive] = useState(0);
    const containerRef = useRef(null);
    const highlightRef = useRef(null);
    const RISE_LEVEL = 0.1;
    const newPercent = useRef(0);
-   const timeoutRef = useRef(null); // bad practice
-   // Direct DOM mutations (appendChild in handlePillPlacement()) cause the `fill` state to reset without re-render or hooks trigger.
-   // Using this ref prevents losing the correct `fill` value. Flex-tape fix
+   const timeoutRef = useRef(null);
    const fillGaurd = useRef(null);
 
    const handlePillHighlight = () => {
@@ -44,18 +39,9 @@ export default function Pill({ fill }) {
       }
    };
 
-   const resetHighlight = () => {
-      const activeEl = containerRef.current.children[selected + 1];
-      if (activeEl) {
-         highlightRef.current.style.width = `${activeEl.offsetWidth}px`;
-         highlightRef.current.style.transform = `translateX(${activeEl.offsetLeft}px)`;
-      }
-   };
-
    useEffect(() => {
       handlePillHighlight();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [active, options]);
+   }, [active]);
 
    useEffect(() => {
       fillGaurd.current = fill;
@@ -66,7 +52,6 @@ export default function Pill({ fill }) {
             timeoutRef.current = null;
          }, 300);
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [fill]);
 
    useEffect(() => {
@@ -74,7 +59,6 @@ export default function Pill({ fill }) {
       return () => {
          window.removeEventListener('resize', handlePillHighlight);
       };
-      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 
    useEffect(() => {
@@ -112,22 +96,21 @@ export default function Pill({ fill }) {
                window.addEventListener('scroll', onScroll);
             } else {
                window.removeEventListener('scroll', onScroll);
-               onScroll(); // fallback
+               onScroll();
             }
          },
          { root: null, rootMargin: '0px', threshold: 0 }
       );
 
-      if (endRef) {
-         onScroll(); // init pill positioning
-         observer.observe(endRef);
-      } else {
-         observer.unobserve(endRef);
+      const endEl = document.getElementById('end');
+      if (endEl) {
+         onScroll();
+         observer.observe(endEl);
       }
 
       return () => {
-         if (endRef && observer != undefined) {
-            observer.unobserve(endRef);
+         if (endEl && observer != undefined) {
+            observer.unobserve(endEl);
          }
       };
    }, []);
@@ -136,44 +119,25 @@ export default function Pill({ fill }) {
       <div
          className={`relative inline-flex overflow-hidden rounded-full bg-gray-400/15 backdrop-blur-xl ${fill ? 'space-x-[-5.4vw] px-[1.9vw]' : ''}`}
          ref={containerRef}
-         onMouseLeave={() => {
-            if (!fillGaurd.current && persist) {
-               resetHighlight();
-               setActive(selected);
-            }
-         }}
       >
          <span
             ref={highlightRef}
-            className="backdrop-xl absolute top-0 left-0 h-full rounded-full bg-blue-900/50 transition-all duration-300"
+            className="backdrop-xl absolute top-0 left-0 h-full rounded-full bg-[#a5a1ff] transition-all duration-300"
          />
 
-         {options.map((option, i) =>
-            option.href != undefined ? (
-               <Link
-                  key={i}
-                  onMouseEnter={() => setActive(i)}
-                  className={`relative z-10 px-[3vw] py-[2vw]`}
-                  href={option.link}
-               >
-                  {option.label}
-               </Link>
-            ) : (
-               <button
-                  key={i}
-                  onMouseEnter={() => setActive(i)}
-                  onClick={() => {
-                     setSelected(i);
-                     if (option.value !== undefined) {
-                        handleClick(option.value);
-                     }
-                  }}
-                  className={`relative z-10 px-[3vw] py-[2vw]`}
-               >
-                  {option.label}
-               </button>
-            )
-         )}
+         {options.map((option, i) => (
+            <button
+               key={i}
+               onMouseEnter={() => setActive(i)}
+               onClick={() => {
+                  setActive(i);
+                  onTabChange(option.value);
+               }}
+               className={`relative z-10 px-[3vw] py-[1vw] text-lg font-semibold text-white`}
+            >
+               {option.label}
+            </button>
+         ))}
       </div>
    );
 }

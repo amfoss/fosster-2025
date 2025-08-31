@@ -1,15 +1,25 @@
+'use client';
+
 import Events from '@/components/events/events';
-import Hero from '@/components/hero/hero';
 import ActionCards from '@/components/who_can_attend_fosster/action_cards';
 import WhyFosster from '@/components/why_attend_foster/why_attend_foster';
 import StackedCards from '@/components/divs_top_on_bottem/stack_divs';
 import ContactUs from '@/components/contact_us/contact_us';
+import { usePill } from '@/app/_contexts/pill';
+import { useEffect } from 'react';
 
 export default function Home() {
+   const { setOptions, setPersist } = usePill();
+   useEffect(() => {
+      setOptions([
+         { label: 'Register', link: '/' },
+         { label: 'Now', link: '/' },
+      ]);
+      setPersist(false);
+   }, [setOptions, setPersist]);
    return (
       <div id="top" className="min-h-screen">
          <div className="space-y-4 p-8">
-            <Hero />
             <p className="text-5xl">Welcome to Fosster 2025, </p>
             <p className="text-5xl font-bold">Testing fonts now (font-bold)</p>
 
@@ -33,10 +43,10 @@ export default function Home() {
             <p style={{ fontWeight: 700 }}>Bold with inline style</p>
          </div>
          <WhyFosster />
-         <StackedCards />
-         <ContactUs />
          <Events />
          <ActionCards />
+         <StackedCards />
+         <ContactUs />
       </div>
    );
 }

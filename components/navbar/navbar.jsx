@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { scrollToHash } from '@/app/_utils/helpers';
 import Pill from './pill';
 import Link from 'next/link';
@@ -9,15 +10,19 @@ export default function NavBar() {
    const [fill, setFill] = useState(false);
    const pillRef = useRef(null);
    const navTargetRef = useRef(null);
+   const pathname = usePathname();
    const navLinks = [
+      { label: 'home', link: '/' },
       { label: 'about', targetHash: 'why-attend' },
-      { label: 'venue', link: '/' },
+      { label: 'venue', link: '/venue' },
       { label: 'contact', targetHash: 'contact-us' },
    ];
 
    const handlePillPlacement = () => {
+      console.log("=====================pillRef",)
       if (!pillRef.current || !navTargetRef.current) return;
       const targetRef = document.getElementById('pill-target');
+      console.log("=====================", targetRef)
       if (!targetRef) return;
 
       const firstRect = pillRef.current.getBoundingClientRect();
@@ -55,6 +60,7 @@ export default function NavBar() {
          // this is for letting container’s CSS take over
          pillRef.current.style.transform = '';
          pillRef.current.style.fontSize = '';
+
       };
    };
 
@@ -88,7 +94,7 @@ export default function NavBar() {
 
       return () => observer.disconnect();
       // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, []);
+   }, [pathname]);
 
    return (
       <>
@@ -102,7 +108,7 @@ export default function NavBar() {
                   }}
                   className="flex items-center justify-center rounded-full bg-gray-500/15 px-[1.75vw] py-[0.6vw] backdrop-blur-xl"
                >
-                  foster
+                  fosster
                </button>
             </div>
             <div className="flex flex-1 items-center justify-center pt-[0.75vw]">
@@ -137,7 +143,7 @@ export default function NavBar() {
                   }}
                   className="flex items-center justify-center rounded-full bg-gray-500/15 px-[1.75vw] py-[0.6vw] backdrop-blur-xl"
                >
-                  foster
+                  fosster
                </button>
                <button
                   onClick={() => {

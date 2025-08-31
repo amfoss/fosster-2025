@@ -18,6 +18,7 @@ export default function CircularText({
    useEffect(() => {
       const onScroll = () => {
          linearPercent.current = (scrollY % ROTATE_STEP) / ROTATE_STEP;
+         if (ref.current == null) return;
          ref.current.animate(
             [
                {
