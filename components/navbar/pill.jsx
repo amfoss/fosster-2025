@@ -149,7 +149,7 @@ export default function Pill({ fill }) {
          />
 
          {options.map((option, i) =>
-            option.href != undefined ? (
+            option.link != undefined ? (
                <Link
                   key={i}
                   onMouseEnter={() => setActive(i)}

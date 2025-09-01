@@ -13,8 +13,8 @@ export default function Home() {
    const { setOptions, setPersist } = usePill();
    useEffect(() => {
       setOptions([
-         { label: 'Register', link: '/' },
-         { label: 'Now', link: '/' },
+         { label: 'Register', link: '/attend' },
+         { label: 'Now', link: '/attend' },
       ]);
       setPersist(false);
    }, [setOptions, setPersist]);
