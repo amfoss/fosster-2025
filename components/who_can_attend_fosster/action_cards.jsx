@@ -2,50 +2,11 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import ArrowDown from '../svg/arrow';
-
+import { whoCanAttendData } from '../jsonData';
 export default function ActionCards() {
-   const sigmas = [
-      {
-         title: 'Student Sigma',
-         description:
-            'Jumpstart your open-source journey, gain hands-on experience, and connect with mentors to develop your skills and career.',
-         iconPath: '/student-shape.svg',
-      },
-      {
-         title: 'DevOps Sigma',
-         description:
-            'Discover the latest open-source tools and best practices to streamline workflows and improve infrastructure management.',
-         iconPath: '/devops-shape.svg',
-      },
-      {
-         title: 'Community Sigma',
-         description:
-            'Expand your network, share your knowledge, and help grow a vibrant, inclusive open-source ecosystem.',
-         iconPath: '/community-shape.svg',
-      },
-      {
-         title: 'AI Sigma',
-         description:
-            'Learn how open-source AI frameworks are shaping the future of machine learning and innovation.',
-         iconPath: '/ai-shape.svg',
-      },
-      {
-         title: 'Design Sigma',
-         description:
-            'Bring creativity into open source with design systems, user experiences, and inclusive interfaces.',
-         iconPath: '/design-shape.svg',
-      },
-      {
-         title: 'Security Sigma',
-         description:
-            'Understand best practices, tools, and communities that keep open-source ecosystems secure.',
-         iconPath: '/security-shape.svg',
-      },
-   ];
-
    const [page, setPage] = useState(0);
    const itemsPerPage = 3;
-   const totalPages = Math.ceil(sigmas.length / itemsPerPage);
+   const totalPages = Math.ceil(whoCanAttendData.length / itemsPerPage);
 
    const handlePrev = () => {
       setPage((prev) => (prev === 0 ? totalPages - 1 : prev - 1));
@@ -113,7 +74,7 @@ export default function ActionCards() {
                         className="flex w-full flex-shrink-0 gap-x-[0.5vw]"
                         style={{ width: `${100 / totalPages}%` }}
                      >
-                        {sigmas
+                        {whoCanAttendData
                            .slice(
                               pageIndex * itemsPerPage,
                               pageIndex * itemsPerPage + itemsPerPage

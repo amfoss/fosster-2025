@@ -3,7 +3,7 @@
 import Globe from '@/components/svg/globe';
 import { usePill } from '../_contexts/pill';
 import { useEffect } from 'react';
-
+import { Passes } from '@/components/jsonData';
 export default function Attend() {
    const { setOptions } = usePill();
    const colors = [
@@ -46,33 +46,32 @@ export default function Attend() {
             </p>
          </div>
          <div className="flex flex-1 gap-[1vw]">
-            {[1, 2, 3, 4].map((elem, index) => (
+            {Passes.map((elem, index) => (
                <div
                   key={index}
                   className={`flex flex-1 flex-col gap-y-[1vw] rounded-[2.5vw] ${colors[index]} transform p-[2.5vw] text-[1.5vw] duration-150 hover:scale-[1.05]`}
                >
                   <div>
-                     <p className="font-semibold">Elite pass</p>
+                     <p className="font-semibold">{elem.pass}</p>
                      <p className="text-[1.2vw]">
-                        Designed to enhance your experience with additional
-                        benefits, including workshop
+                        {elem.desc}
                      </p>
                   </div>
                   <div>
-                     <p className="font-semibold">Rs500</p>
+                     <p className="font-semibold">₹{elem.cost}</p>
                   </div>
                   <div className="flex-1">
-                     {[1, 2, 3, 4, 5].map((elem, index) => (
-                        <div key={index} className="flex">
+                     {elem.benifits.map((elem, index) => (
+                        <div key={index} className="flex items-center mt-2">
                            <div className="flex min-w-[2vw]">
                               <Globe />
                            </div>{' '}
-                           <p>Benefit</p>
+                           <p className='text-lg'>{elem}</p>
                         </div>
                      ))}
                   </div>
                   <button className="rounded-full bg-amber-600 p-[1vw]">
-                     <p>Elite pass</p>
+                     <p>{elem.pass}</p>
                   </button>
                </div>
             ))}

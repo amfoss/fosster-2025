@@ -1,38 +1,5 @@
 import React from 'react';
-
-const events = [
-   {
-      title: 'Event Sigma',
-      description:
-         'Sigma balls are very clever, i kinda like em tbh. But is that the end goal? Where does it lead me to? We might never know until we are closer....or do we? Lots of questions, lots of time. But none to spare',
-   },
-   {
-      title: 'Event Sigma',
-      description:
-         'Sigma balls are very clever, i kinda like em tbh. But is that the end goal? Where does it lead me to? We might never know until we are closer....or do we? Lots of questions, lots of time. But none to spare',
-   },
-   {
-      title: 'Event Sigma',
-      description:
-         'Sigma balls are very clever, i kinda like em tbh. But is that the end goal? Where does it lead me to? We might never know until we are closer....or do we? Lots of questions, lots of time. But none to spare',
-   },
-   {
-      title: 'Event Sigma',
-      description:
-         'Sigma balls are very clever, i kinda like em tbh. But is that the end goal? Where does it lead me to? We might never know until we are closer....or do we? Lots of questions, lots of time. But none to spare',
-   },
-   {
-      title: 'Event Sigma',
-      description:
-         'Sigma balls are very clever, i kinda like em tbh. But is that the end goal? Where does it lead me to? We might never know until we are closer....or do we? Lots of questions, lots of time. But none to spare',
-   },
-   {
-      title: 'Event Sigma',
-      description:
-         'Sigma balls are very clever, i kinda like em tbh. But is that the end goal? Where does it lead me to? We might never know until we are closer....or do we? Lots of questions, lots of time. But none to spare',
-   },
-];
-
+import { events } from '../jsonData';
 const Events = () => {
    return (
       <div className="m-[0.5vw]">
