@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import CircularText from '../ui/circular_text';
 
 export default function Hero() {
    const pathname = usePathname();
@@ -33,6 +34,9 @@ export default function Hero() {
                   <p className="leading-[4vw]">2025</p>
                </div>
             </div>
+         </div>
+         <div className="absolute right-0 bottom-0 m-[2.5vw] size-[10vw]">
+            <CircularText text="SEE MORE SEE MORE " />
          </div>
       </div>
    );

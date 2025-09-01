@@ -17,6 +17,7 @@ export default function NavBar() {
       { label: 'venue', link: '/venue' },
       { label: 'contact', link: '/#contact-us' },
    ];
+   const [scrollDir, setScrollDir] = useState('scrolling up');
 
    const handlePillPlacement = () => {
       if (!pillRef.current || !navTargetRef.current) return;
@@ -62,6 +63,42 @@ export default function NavBar() {
    };
 
    useEffect(() => {
+      const threshold = 0;
+      let lastScrollY = window.pageYOffset;
+      let ticking = false;
+
+      const updateScrollDir = () => {
+         const scrollY = window.pageYOffset;
+
+         if (Math.abs(scrollY - lastScrollY) < threshold) {
+            ticking = false;
+            return;
+         }
+         setScrollDir(
+            scrollY > lastScrollY
+               ? scrollY > window.innerHeight
+                  ? 'scrolling down'
+                  : 'scrolling up'
+               : 'scrolling up'
+         );
+         lastScrollY = scrollY > 0 ? scrollY : 0;
+         ticking = false;
+      };
+
+      const onScroll = () => {
+         if (!ticking) {
+            window.requestAnimationFrame(updateScrollDir);
+            ticking = true;
+         }
+      };
+
+      window.addEventListener('scroll', onScroll);
+      console.log(scrollDir);
+
+      return () => window.removeEventListener('scroll', onScroll);
+   }, [scrollDir]);
+
+   useEffect(() => {
       handlePillPlacement();
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [fill]);
@@ -96,7 +133,7 @@ export default function NavBar() {
    return (
       <>
          <nav
-            className={`fixed top-0 z-50 flex w-full text-[1.3vw] ${true ? '' : '-translate-y-full'}`}
+            className={`fixed top-0 z-50 flex w-full text-[1.3vw] ${scrollDir == 'scrolling up' ? '' : '-translate-y-full'} transform duration-150`}
          >
             <div className="flex flex-1 justify-start pt-[0.75vw] pl-[0.75vw]">
                <button
