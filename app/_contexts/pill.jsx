@@ -9,6 +9,10 @@ export function PillProvider({ children }) {
    const [handleClick, setHandleClick] = useState(() => () => {});
    const [selected, setSelected] = useState(0);
    const [persist, setPersist] = useState(true);
+   // 0 - normal
+   // 1 - menu
+   // 2 - paginated
+   const [mode, setMode] = useState(0);
 
    return (
       <PillContext.Provider
@@ -21,6 +25,8 @@ export function PillProvider({ children }) {
             setSelected,
             persist,
             setPersist,
+            mode,
+            setMode,
          }}
       >
          {children}

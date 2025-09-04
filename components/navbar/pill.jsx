@@ -3,7 +3,15 @@ import Link from 'next/link';
 import { usePill } from '@/app/_contexts/pill';
 
 export default function Pill({ fill }) {
-   const { options, handleClick, selected, setSelected, persist } = usePill();
+   const {
+      options,
+      handleClick,
+      selected,
+      setSelected,
+      persist,
+      mode,
+      setMode,
+   } = usePill();
    const [active, setActive] = useState(0);
    const containerRef = useRef(null);
    const highlightRef = useRef(null);
@@ -93,11 +101,24 @@ export default function Pill({ fill }) {
                  : 1;
 
          newPercent.current = linearPercent;
+         const containerRect = containerRef.current.getBoundingClientRect();
+         let desiredScale = newPercent.current + 1;
+         let scaledWidth = containerRect.width * 2;
+         if (scaledWidth > window.innerWidth) {
+            console.log('this will exceed');
+            desiredScale =
+               (newPercent.current *
+                  (window.innerWidth - containerRect.width)) /
+                  containerRect.width +
+               1;
+         } else {
+            console.log('this WONT exceed');
+         }
          containerRef.current.animate(
             [
                {
-                  transform: `translateY(${-newPercent.current * (0.25 * window.innerHeight - 0.015 * window.innerWidth)}px)`,
-                  scale: newPercent.current + 1,
+                  transform: `translateY(${-newPercent.current * (0.5 * window.innerHeight - 0.015 * window.innerWidth - 0.25 * containerRect.height)}px) 
+                              scale(${desiredScale}`,
                },
             ],
             {
@@ -134,7 +155,7 @@ export default function Pill({ fill }) {
 
    return (
       <div
-         className={`relative inline-flex overflow-hidden rounded-full bg-gray-400/15 backdrop-blur-xl ${fill ? 'space-x-[-5.4vw] px-[1.9vw]' : ''}`}
+         className={`relative inline-flex overflow-hidden rounded-full bg-gray-400/15 backdrop-blur-xl ${fill ? 'space-x-[-5.4vw] px-[1.9vw]' : ''} pointer-events-auto`}
          ref={containerRef}
          onMouseLeave={() => {
             if (!fillGaurd.current && persist) {
@@ -143,10 +164,14 @@ export default function Pill({ fill }) {
             }
          }}
       >
-         <span
-            ref={highlightRef}
-            className="backdrop-xl absolute top-0 left-0 h-full rounded-full bg-blue-900/50 transition-all duration-300"
-         />
+         {mode != 1 ? (
+            <span
+               ref={highlightRef}
+               className="backdrop-xl absolute top-0 left-0 h-full rounded-full bg-blue-900/50 transition-all duration-300"
+            />
+         ) : (
+            <></>
+         )}
 
          {options.map((option, i) =>
             option.link != undefined ? (
