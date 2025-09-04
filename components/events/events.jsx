@@ -1,4 +1,4 @@
-import React from 'react';
+import Link from 'next/link';
 import { events } from '../jsonData';
 const Events = () => {
    return (
@@ -11,7 +11,8 @@ const Events = () => {
          {/* Grid */}
          <div className="grid h-screen max-h-screen grid-cols-1 gap-[0.5vw] pt-[1vw] sm:grid-cols-2 lg:grid-cols-3">
             {events.map((event, idx) => (
-               <div
+               <Link
+                  href={'/events/' + event.link}
                   key={idx}
                   className="flex transform flex-col justify-center overflow-hidden rounded-[5vw] bg-[#1b1b1f] p-[5vw] align-middle shadow-md transition duration-300 hover:scale-[103%] hover:bg-[#a5a1ff] hover:text-black max-md:max-h-[48vh]"
                >
@@ -21,7 +22,7 @@ const Events = () => {
                   <p className="text-[1.3vw] leading-snug">
                      {event.description}
                   </p>
-               </div>
+               </Link>
             ))}
          </div>
       </div>

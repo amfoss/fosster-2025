@@ -1,31 +1,37 @@
 export const events = [
    {
       title: 'Lightning Talks',
+      link: 'lightning-talks',
       description:
          'Short, impactful talks that deliver key ideas in an engaging way, Showcasing projects, sharing discoveries, and sparking conversations across open-source communities.',
    },
    {
       title: 'Panel Discussions',
+      link: 'panel-discussions',
       description:
          "Live, moderated session's with experts exploring pivotal open-source topics, fostering creative thinking, collaborative solutions, and insights on today’s most relevant, emerging themes.",
    },
    {
       title: 'Tech Workshops',
+      link: 'tech-workshops',
       description:
          'Hands-on sessions with experts to build real-world open-source skills, with personalized support, best practices, and practical experience to strengthen contributions to projects.',
    },
    {
       title: 'Open Source 101',
+      link: 'open-source-101',
       description:
          'Sessions that introduce what open source is, why it matters, and how to participate effectively while learning best practices and community etiquette for engaging with global developer communities.',
    },
    {
       title: 'Speaker Sessions',
+      link: 'speaker-sessions',
       description:
          'In-dept sessions with open-source leaders and maintainers sharing insights, experiences, and practical guidance. Discover impactful projects, explore community dynamics, and gain inspiration to contribute effectively to open source',
    },
    {
       title: 'Job Fair',
+      link: 'job-fair',
       description:
          'Meet top tech employers hiring open-source contributors, build valuable connections, and explore career opportunities that transform open-source experience into meaningful professional growth',
    },
