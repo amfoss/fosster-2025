@@ -1,44 +1,7 @@
 import CircularText from '@/components/ui/circular_text';
 import SlidingCards from '@/components/why_attend_foster/sliding_cards';
-
+import { reasons } from '../jsonData';
 export default function WhyFosster() {
-   const reasons = [
-      {
-         icon: '',
-         reason: {
-            heading: 'Connection',
-            desc: 'Connect with open-source leaders and innovators',
-         },
-      },
-      {
-         icon: '',
-         reason: {
-            heading: 'Learn',
-            desc: 'Learn from real-world projects and expert contributors',
-         },
-      },
-      {
-         icon: '',
-         reason: {
-            heading: 'Experience',
-            desc: 'Gain hands-on experience with modern tools and tech',
-         },
-      },
-      {
-         icon: '',
-         reason: {
-            heading: 'Explore',
-            desc: 'Discover career opportunities and grow your network',
-         },
-      },
-      {
-         icon: '',
-         reason: {
-            heading: 'Community',
-            desc: 'Be part of a global, collaborative community',
-         },
-      },
-   ];
    return (
       <div
          id="why-attend"
