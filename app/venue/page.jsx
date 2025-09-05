@@ -103,26 +103,26 @@ export default function Venue() {
    return (
       <div
          id="Venue"
-         className="flex h-screen w-full flex-col bg-[#1b1b1f] p-[5vw] text-white"
+         className="flex min-h-screen w-full flex-col bg-[#1b1b1f] p-[5vw] text-white max-md:pt-[20vw]"
       >
-         <h1 className="text-left text-4xl font-bold md:text-[1.5vw]">
+         <h1 className="text-left text-4xl font-bold max-md:text-[4vw] md:text-[1.5vw]">
             How to reach the{' '}
             <span className="bg-[#a5a1ff] bg-clip-text text-transparent">
                venue?
             </span>
          </h1>
 
-         <div className="flex gap-x-[2.5vw]">
+         <div className="flex gap-x-[2.5vw] max-md:flex-col max-md:gap-y-[5vw]">
             <div key={selectedTab} className="flex flex-1 flex-col gap-y-[1vw]">
                <div className="">
-                  <h2 className="text-[4vw] leading-tight font-semibold text-yellow-200 italic">
+                  <h2 className="text-[4vw] leading-tight font-semibold text-yellow-200 italic max-md:text-[10vw]">
                      {data.title}
                   </h2>
-                  <p className="max-w-[40vw] text-[1.5vw] text-gray-400">
+                  <p className="text-[1.5vw] text-gray-400 max-md:text-[4vw] md:max-w-[40vw]">
                      {data.description}
                   </p>
                </div>
-               <div className="space-y-4 rounded-[5vw] bg-[#2a2a2a] p-[4vw] text-[1.5vw]">
+               <div className="space-y-4 rounded-[5vw] bg-[#2a2a2a] p-[4vw] text-[1.5vw] max-md:rounded-[10vw] max-md:p-[8vw] max-md:text-[4vw]">
                   {data.options &&
                      data.options.map((opt, idx) => (
                         <div key={idx} className="flex justify-between">
@@ -141,7 +141,7 @@ export default function Venue() {
                      ))}
                </div>
             </div>
-            <div className="ml-auto h-[37.5vw] w-full max-w-[45vw] overflow-hidden rounded-[28px] bg-[#2a2a2a]">
+            <div className="ml-auto w-full overflow-hidden rounded-[28px] bg-[#2a2a2a] max-md:h-[50vh] md:h-[37.5vw] md:max-w-[45vw]">
                <div className="h-full w-full">
                   <MapComponent mode={selectedTab} data={data} />
                </div>

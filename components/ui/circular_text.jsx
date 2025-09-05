@@ -68,21 +68,21 @@ export default function CircularText({
    return (
       <div
          ref={ref}
-         className={`relative flex size-[${10.2}vw] items-center justify-center overflow-hidden text-[1.3vw] font-bold`}
+         className={`relative flex size-[${10.2}vw] items-center justify-center overflow-hidden text-[1.3vw] font-bold max-md:text-[4vw]`}
       >
          {/* <div className="absolute bg-yellow-300 text-black">
             {linearPercent.current}
          </div> */}
          <div
             ref={arrowRef}
-            className="flex min-h-[10vw] min-w-[10vw] flex-1 p-[4vw]"
+            className="flex min-h-[10vw] min-w-[10vw] flex-1 p-[4vw] max-md:p-[11vw]"
          >
             {children}
          </div>
          {letters.map((letter, i) => (
             <span
                key={i}
-               className="absolute mr-[-1vw]"
+               className="absolute mr-[-1vw] max-md:mr-[-2.5vw]"
                style={{
                   transform: `
               rotate(${i * angleStep}deg)

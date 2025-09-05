@@ -1,11 +1,23 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import ArrowDown from '../svg/arrow';
-import { whoCanAttendData } from '../jsonData';
+import { whoCanAttendData } from '../../data/jsonData';
+
 export default function ActionCards() {
    const [page, setPage] = useState(0);
-   const itemsPerPage = 3;
+   const [itemsPerPage, setItemsPerPage] = useState(3);
+
+   // responsive items per page
+   useEffect(() => {
+      const updateItemsPerPage = () => {
+         setItemsPerPage(window.innerWidth < 768 ? 1 : 3);
+      };
+      updateItemsPerPage();
+      window.addEventListener('resize', updateItemsPerPage);
+      return () => window.removeEventListener('resize', updateItemsPerPage);
+   }, []);
+
    const totalPages = Math.ceil(whoCanAttendData.length / itemsPerPage);
 
    const handlePrev = () => {
@@ -17,11 +29,10 @@ export default function ActionCards() {
    };
 
    return (
-      <div className="relative flex min-h-screen flex-col overflow-hidden bg-[#1b1b1f] p-8 text-white md:p-12 lg:p-16">
-         {/* Header */}
-         <header className="mb-10 flex w-full">
+      <div className="relative m-[0.5vw] flex flex-col overflow-hidden rounded-[5vw] bg-[#1b1b1f] p-8 text-white max-md:min-h-[90vh] max-md:rounded-[10vw] md:min-h-screen md:p-12 lg:p-16">
+         <div className="mb-10 flex w-full">
             <div className="z-10 flex w-full gap-[2.5vw]">
-               <div className="h-[80px] w-[80px] flex-shrink-0 text-gray-500 md:h-[100px] md:w-[100px]">
+               <div className="size-[80px] flex-shrink-0 text-gray-500 md:h-[100px] md:w-[100px]">
                   <Image
                      src={'asterisks_symbol.svg'}
                      height={100}
@@ -29,31 +40,31 @@ export default function ActionCards() {
                      alt="Asterisk"
                   />
                </div>
-               <div className="flex flex-1">
-                  <h1 className="flex-1 text-[5vw] leading-tight font-bold tracking-tight">
+               <div className="flex flex-1 max-md:flex-col">
+                  <h1 className="flex-1 text-[5vw] leading-tight font-bold tracking-tight max-md:text-[10vw]">
                      Who Should <br />
                      <i>attend</i> FOSSTER
                   </h1>
-                  <p className="max-w-[30vw] text-[1.5vw]">
+                  <p className="text-[1.5vw] max-md:text-[4vw] md:max-w-[30vw]">
                      Anyone can attend honestly, I just want the monaayyy ;{')'}
                   </p>
                </div>
             </div>
-         </header>
+         </div>
 
-         <div className="flex flex-1 gap-x-[2.5vw]">
-            {/* Desktop Arrows */}
-            <div className="flex flex-col justify-end">
+         <div className="flex flex-1 gap-x-[2.5vw] max-md:flex-col-reverse max-md:gap-y-[6vw]">
+            {/* Arrows */}
+            <div className="flex flex-col justify-end max-md:items-center">
                <div className="flex gap-x-[1vw]">
                   <button
                      onClick={handlePrev}
-                     className="flex size-[6.7vw] rotate-90 items-center justify-center rounded-full bg-[#d9d9d9] p-[2vw] text-black transition-colors hover:bg-gray-400"
+                     className="flex size-[6.7vw] rotate-90 items-center justify-center rounded-full bg-[#d9d9d9] p-[2vw] text-black transition-colors hover:bg-gray-400 max-md:size-[20vw] max-md:p-[4vw]"
                   >
                      <ArrowDown />
                   </button>
                   <button
                      onClick={handleNext}
-                     className="flex size-[6.7vw] -rotate-90 items-center justify-center rounded-full bg-[#d9d9d9] p-[2vw] text-black transition-colors hover:bg-gray-400"
+                     className="flex size-[6.7vw] -rotate-90 items-center justify-center rounded-full bg-[#d9d9d9] p-[2vw] text-black transition-colors hover:bg-gray-400 max-md:size-[20vw] max-md:p-[4vw]"
                   >
                      <ArrowDown />
                   </button>
@@ -64,7 +75,7 @@ export default function ActionCards() {
                <div
                   className="flex flex-1 gap-x-[0.5vw] px-[0.5vw] transition-transform duration-500 ease-in-out"
                   style={{
-                     transform: `translateX(-${page * 50}%)`,
+                     transform: `translateX(-${page * (100 / totalPages)}%)`,
                      width: `${totalPages * 100}%`,
                   }}
                >
@@ -82,15 +93,16 @@ export default function ActionCards() {
                            .map((item, idx) => (
                               <div
                                  key={idx}
-                                 className="flex flex-1 grow flex-col overflow-hidden rounded-[2.5vw] bg-[#a5a1ff] p-[2.5vw]"
+                                 className="flex flex-1 grow cursor-pointer flex-col overflow-hidden rounded-[2.5vw] bg-[#a5a1ff] p-[2.5vw] max-md:rounded-[5vw] max-md:p-[5vw]"
+                                 onClick={handleNext}
                               >
-                                 <h2 className="text-[1.7vw] font-bold text-black">
+                                 <h2 className="text-[1.7vw] font-bold text-black max-md:text-[4vw]">
                                     {item.title}
                                  </h2>
                                  <div className="m-[2.5vw] flex justify-center">
                                     <div className="h-40 w-40 bg-black"></div>
                                  </div>
-                                 <p className="flex-1 text-xl leading-relaxed text-gray-700">
+                                 <p className="flex-1 text-xl leading-relaxed text-gray-700 max-md:text-[4vw]">
                                     {item.description}
                                  </p>
                               </div>
@@ -99,22 +111,6 @@ export default function ActionCards() {
                   ))}
                </div>
             </div>
-         </div>
-
-         {/* Mobile Arrows */}
-         <div className="mt-8 flex items-center justify-center gap-4 lg:hidden">
-            <button
-               onClick={handlePrev}
-               className="flex h-16 w-16 items-center justify-center rounded-full bg-[#d9d9d9] transition-colors hover:bg-gray-400"
-            >
-               <span className="font-mono text-3xl text-black">←</span>
-            </button>
-            <button
-               onClick={handleNext}
-               className="flex h-16 w-16 items-center justify-center rounded-full bg-[#d9d9d9] transition-colors hover:bg-gray-400"
-            >
-               <span className="font-mono text-3xl text-black">→</span>
-            </button>
          </div>
       </div>
    );

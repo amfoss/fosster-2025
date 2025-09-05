@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { usePill } from '@/app/_contexts/pill';
 
 export default function Pill({ fill }) {
-   const { options, handleClick, selected, setSelected, persist, mode } = usePill();
+   const { options, handleClick, selected, setSelected, persist, mode } =
+      usePill();
    const [active, setActive] = useState(0);
    const containerRef = useRef(null);
    const highlightRef = useRef(null);
@@ -152,7 +153,7 @@ export default function Pill({ fill }) {
       <div
          className={
             mode != 1
-               ? `relative inline-flex overflow-hidden rounded-full bg-gray-400/15 backdrop-blur-xl ${fill ? 'space-x-[-5.4vw] px-[1.9vw]' : ''} pointer-events-auto`
+               ? `relative inline-flex overflow-hidden rounded-full bg-gray-400/15 backdrop-blur-xl ${fill ? 'space-x-[-5.4vw] px-[1.9vw] max-md:space-x-[-10vw]' : ''} pointer-events-auto`
                : 'pointer-events-auto relative gap-y-[1vw] rounded-full bg-gray-400/15 backdrop-blur-xl'
          }
          ref={containerRef}
@@ -173,13 +174,13 @@ export default function Pill({ fill }) {
                onClick={() => setOpen(!open)}
                className="relative z-20 flex items-center justify-center rounded-full px-[3vw] py-[2vw] text-white max-md:px-[6vw] max-md:py-[4vw]"
             >
-               <span
+               {/* <span
                   className={`absolute block h-0.5 w-6 bg-white transition-all duration-300 ${
                      open ? 'rotate-45' : '-translate-y-2'
                   }`}
-               />
-               ff
-               <span
+               /> */}
+               {open ? 'Hide Events' : 'See Events'}
+               {/* <span
                   className={`absolute block h-0.5 w-6 bg-white transition-all duration-300 ${
                      open ? 'opacity-0' : ''
                   }`}
@@ -188,7 +189,7 @@ export default function Pill({ fill }) {
                   className={`absolute block h-0.5 w-6 bg-white transition-all duration-300 ${
                      open ? '-rotate-45' : 'translate-y-2'
                   }`}
-               />
+               /> */}
             </button>
          )}
 
@@ -245,7 +246,7 @@ export default function Pill({ fill }) {
                         handleClick(option.value);
                      }
                   }}
-                  className={`z-10 px-[3vw] py-[2vw] duration-300 max-md:px-[6vw] max-md:py-[4vw] ${mode == 1 ? 'absolute left-1/2 -translate-x-1/2 rounded-full bg-amber-950 whitespace-nowrap hover:bg-blue-900/50' : 'relative'}`}
+                  className={`z-10 px-[3vw] py-[2vw] duration-300 max-md:px-[6vw] max-md:py-[4vw] ${mode == 1 ? 'absolute left-1/2 -translate-x-1/2 rounded-full bg-[#a5a1ff] whitespace-nowrap text-black hover:bg-blue-900/50' : 'relative'}`}
                >
                   {option.label}
                </button>

@@ -26,12 +26,17 @@ export default function EventClient({ children }) {
       ]);
       setPersist(true);
       setHandleClick(() => handleRoutes);
-      if (window.innerWidth < 680) {
-         setMode(1);
-      } else {
-         setMode(0);
-      }
+      const updateMode = () => {
+         if (window.innerWidth < 680) {
+            setMode(1);
+         } else {
+            setMode(0);
+         }
+      };
+      updateMode();
+      window.addEventListener('resize', updateMode);
+      return () => window.removeEventListener('resize', updateMode);
    }, [setOptions, setPersist, setHandleClick, handleRoutes, setMode]);
 
-   return <div>{children}</div>;
+   return <div className="min-h-[101vh] max-md:pt-[10vw]">{children}</div>;
 }

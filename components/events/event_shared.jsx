@@ -1,68 +1,136 @@
-'use client';
-
-import { useEffect } from 'react';
-import ArrowDown from '../svg/arrow';
+import ArrowDown from '@/components/svg/arrow';
 
 export default function EventPage({ event }) {
-   useEffect(() => {
-      console.log(event);
-   }, [event]);
+   const renderSection = (section, index) => {
+      const { type, title, items } = section;
 
-   return (
-      <div className="flex w-screen gap-x-[2.5vw] p-[5vw]">
-         {/* LEFT SIDE: Title + Description */}
-         <div>
-            <div className="sticky top-[5vw] w-[35vw]">
-               <p className="text-[5vw] font-bold">{event.title}</p>
-               <p className="text-[1.5vw]">{event.description}</p>
-            </div>
-         </div>
-
-         {/* RIGHT SIDE: Content sections */}
-         <div className="flex flex-col gap-y-[1vw]">
-
-            {/* Highlights Grid */}
-            {event.highlights && (
-               <div className="grid w-full grid-cols-2 gap-[0.5vw] text-black">
-                  {event.highlights.map((h, i) => (
+      switch (type) {
+         case 'cards':
+            return (
+               <div
+                  key={index}
+                  className="grid w-full grid-cols-2 gap-[0.5vw] text-black"
+               >
+                  {items.map((item, i) => (
                      <div
                         key={i}
-                        className="flex flex-col rounded-[2.5vw] bg-yellow-200 p-[2.5vw]"
+                        className="flex flex-col rounded-[2.5vw] bg-yellow-200 p-[2.5vw] text-[1.3vw] max-md:rounded-[5vw] max-md:p-[5vw] max-md:text-[4vw]"
                      >
-                        <p className="text-[1.3vw] font-semibold">{h.title}</p>
-                        <p className="text-[1.3vw]">{h.content}</p>
+                        <p className="font-semibold">{item.title}</p>
+                        <p className="">{item.content}</p>
                      </div>
                   ))}
                </div>
-            )}
+            );
 
-            {/* Themes Section */}
-            {event.themes && (
-               <div className="rounded-[2.5vw] bg-amber-200 p-[2.5vw] text-[1.3vw] text-black">
-                  <p className="mb-[0.5vw] text-[1vw] font-bold tracking-tight">
-                     Themes & Focus Areas
+         case 'list':
+            return (
+               <div
+                  key={index}
+                  className="rounded-[2.5vw] bg-amber-200 p-[2.5vw] text-[1.3vw] text-black max-md:p-[5vw] max-md:text-[4vw]"
+               >
+                  <p className="mb-[0.5vw] text-[1vw] font-bold tracking-tight max-md:text-[4vw]">
+                     {title}
                   </p>
-                  {event.themes.map((theme, i) => (
+                  {items.map((item, i) => (
                      <div key={i} className="flex items-center gap-[0.5vw]">
                         <div className="w-[1vw] -rotate-90">
                            <ArrowDown />
                         </div>
-                        {theme}
+                        {item}
                      </div>
                   ))}
                </div>
-            )}
+            );
 
-            {/* Sponsorship Section */}
-            {event.sponsorship && (
-               <div className="rounded-[2.5vw] bg-amber-200 p-[2.5vw] text-[1.3vw] text-black">
-                  <p className="mb-[0.5vw] text-[1vw] font-bold tracking-tight">
-                     Panel Sponsorship Opportunities
+         case 'simple':
+            return (
+               <div
+                  key={index}
+                  className="rounded-[2.5vw] bg-amber-200 p-[2.5vw] text-[1.3vw] text-black max-md:p-[5vw] max-md:text-[4vw]"
+               >
+                  <p className="mb-[0.5vw] text-[1vw] font-bold tracking-tight max-md:text-[4vw]">
+                     {title}
                   </p>
-                  {event.sponsorship.map((item, i) => (
-                     <div key={i}>{item}</div>
+                  {items.map((item, i) => (
+                     <div key={i} className="mb-[0.5vw]">
+                        {item}
+                     </div>
                   ))}
                </div>
+            );
+
+         case 'keyValue':
+            return (
+               <div
+                  key={index}
+                  className="rounded-[2.5vw] bg-amber-200 p-[2.5vw] text-[1.3vw] text-black max-md:p-[5vw] max-md:text-[4vw]"
+               >
+                  <p className="mb-[0.5vw] text-[1vw] font-bold tracking-tight max-md:text-[4vw]">
+                     {title}
+                  </p>
+                  {items.map((item, i) => (
+                     <div key={i} className="flex items-center gap-[0.5vw]">
+                        <div className="w-[1vw] -rotate-90">
+                           <ArrowDown />
+                        </div>
+                        <span>
+                           <strong>{item.key}:</strong> {item.value}
+                        </span>
+                     </div>
+                  ))}
+               </div>
+            );
+
+         default:
+            return null;
+      }
+   };
+
+   return (
+      <div className="flex w-screen p-[5vw] max-md:flex-col max-md:gap-y-[2.5vw] md:gap-x-[2.5vw]">
+         <div>
+            <div className="top-[5vw] flex flex-col gap-y-[1vw] max-md:gap-y-[3vw] md:sticky md:w-[35vw]">
+               <p className="text-[5vw] font-bold max-md:text-[10vw] md:leading-[5.5vw]">
+                  {event.title}
+               </p>
+               <p className="text-[1.5vw] max-md:text-[4vw]">
+                  {event.description}
+               </p>
+               <div className="text-[1.3vw] text-gray-400 max-md:text-[4vw]">
+                  {event.date && <p>📅 {event.date}</p>}
+
+                  {event.ledBy && (
+                     <p>
+                        <strong>🎓 Led by:</strong> {event.ledBy}
+                     </p>
+                  )}
+
+                  {event.proposalCall && (
+                     <div className="my-[1vw] rounded-[2.5vw] bg-[#a5a1ff] p-[1.25vw] text-black max-md:my-[2vw] max-md:rounded-[5vw] max-md:p-[3vw]">
+                        <strong>📢 Call for Proposals:</strong>{' '}
+                        {event.proposalCall}
+                     </div>
+                  )}
+
+                  {event.contact && (
+                     <p>
+                        <strong>📧 Contact:</strong> {event.contact}
+                     </p>
+                  )}
+
+                  {event.schedule && (
+                     <p>
+                        <strong>🕐 Schedule:</strong> {event.schedule}
+                     </p>
+                  )}
+               </div>
+            </div>
+         </div>
+
+         <div className="flex flex-col gap-y-[1vw] max-md:gap-y-[2.5vw]">
+            {event.sections?.map((section, index) =>
+               renderSection(section, index)
             )}
          </div>
       </div>

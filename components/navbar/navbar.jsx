@@ -12,7 +12,6 @@ export default function NavBar() {
    const navTargetRef = useRef(null);
    const pathname = usePathname();
    const navLinks = [
-      { label: 'home', link: '/#hero' },
       { label: 'about', link: '/#about' },
       { label: 'venue', link: '/venue' },
       { label: 'contact', link: '/#contact-us' },
@@ -133,19 +132,17 @@ export default function NavBar() {
    return (
       <>
          <nav
-            className={`fixed top-0 z-50 flex w-full text-[1.3vw] ${scrollDir == 'scrolling up' ? '' : '-translate-y-full'} transform duration-150`}
+            className={`fixed top-0 z-50 flex w-full text-[1.3vw] max-md:text-[4vw] ${scrollDir == 'scrolling up' ? '' : '-translate-y-full'} transform duration-150`}
          >
-            <div className="flex flex-1 justify-start pt-[0.75vw] pl-[0.75vw]">
-               <button
-                  onClick={() => {
-                     scrollToHash('hero');
-                  }}
-                  className="flex items-center justify-center rounded-full bg-gray-500/15 px-[1.75vw] py-[0.6vw] backdrop-blur-xl"
+            <div className="flex flex-1 justify-start pt-[0.75vw] pl-[0.75vw] max-md:pt-[3vw] max-md:pl-[3vw]">
+               <Link
+                  href={'/#hero'}
+                  className="flex items-center justify-center rounded-full bg-gray-500/15 px-[1.75vw] py-[0.6vw] backdrop-blur-xl max-md:px-[4vw] max-md:py-[2vw]"
                >
                   fosster
-               </button>
+               </Link>
             </div>
-            <div className="flex flex-1 items-center justify-center pt-[0.75vw]">
+            <div className="flex flex-1 items-center justify-center pt-[0.75vw] max-md:pt-[3vw] max-md:pr-[3vw]">
                {navLinks.map((elem, index) =>
                   elem.link === undefined ? (
                      <button
@@ -155,13 +152,13 @@ export default function NavBar() {
                               ? scrollToHash(elem.targetHash)
                               : null;
                         }}
-                        className="flex items-center justify-center rounded-full bg-gray-500/15 px-[1.75vw] py-[0.6vw] backdrop-blur-xl"
+                        className="flex items-center justify-center rounded-full bg-gray-500/15 px-[1.75vw] py-[0.6vw] backdrop-blur-xl max-md:px-[4vw] max-md:py-[2vw]"
                      >
                         {elem.label}
                      </button>
                   ) : (
                      <Link
-                        className="flex items-center justify-center rounded-full bg-gray-500/15 px-[1.75vw] py-[0.6vw] backdrop-blur-xl"
+                        className="flex items-center justify-center rounded-full bg-gray-500/15 px-[1.75vw] py-[0.6vw] backdrop-blur-xl max-md:px-[4vw] max-md:py-[2vw]"
                         key={index}
                         href={elem.link}
                      >
@@ -170,28 +167,11 @@ export default function NavBar() {
                   )
                )}
             </div>
-            <div className="flex flex-1 justify-end pt-[0.75vw] pr-[0.75vw]">
-               <button
-                  onClick={() => {
-                     scrollToHash('hero');
-                  }}
-                  className="flex items-center justify-center rounded-full bg-gray-500/15 px-[1.75vw] py-[0.6vw] backdrop-blur-xl"
-               >
-                  fosster
-               </button>
-               <button
-                  onClick={() => {
-                     setFill(!fill);
-                  }}
-               >
-                  Click me
-               </button>
-            </div>
          </nav>
 
          <div
             ref={navTargetRef}
-            className={`${'fixed bottom-0 z-50'} pointer-events-none flex w-full flex-1 justify-center pb-[1.5vw] text-[1.3vw] max-md:pb-[3vw] max-md:text-[3.5vw]`}
+            className={`${'fixed bottom-0 z-50'} pointer-events-none flex w-full flex-1 justify-center pb-[1.5vw] text-[1.3vw] max-md:pb-[6vw] max-md:text-[3.5vw]`}
          >
             <div ref={pillRef}>
                <Pill fill={fill} />

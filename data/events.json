@@ -4,34 +4,48 @@
       "title": "Panel Discussions",
       "date": "Sept 5, 2025",
       "description": "FOSSter 2025's Panel Discussions are live, moderated conversations featuring thought leaders discussing pivotal topics in open source. Expect interactive dialogue, cross-disciplinary insights, and vibrant debate — a format that moves far beyond solo talks.",
-      "highlights": [
+      "sections": [
          {
-            "title": "Gain Diverse Perspectives",
-            "content": "Hear from multiple experts as they unpack complex FOSS topics from various angles."
+            "type": "cards",
+            "title": "Highlights",
+            "items": [
+               {
+                  "title": "Gain Diverse Perspectives",
+                  "content": "Hear from multiple experts as they unpack complex FOSS topics from various angles."
+               },
+               {
+                  "title": "Spark New Ideas",
+                  "content": "The live, interactive format fosters creative thinking and collaborative solutions."
+               },
+               {
+                  "title": "Engage with Experts",
+                  "content": "Q&A segments provide direct interaction and learning opportunities with panelists."
+               },
+               {
+                  "title": "Stay Ahead of Trends",
+                  "content": "Panels cover the most relevant, emerging themes in open source and tech."
+               }
+            ]
          },
          {
-            "title": "Spark New Ideas",
-            "content": "The live, interactive format fosters creative thinking and collaborative solutions."
+            "type": "list",
+            "title": "Themes & Focus Areas",
+            "items": [
+               "The Future of Open Source Governance & Sustainability",
+               "Building Inclusive Communities: Diversity, Equity & Belonging in FOSS",
+               "Emerging Technologies & Open Source's Role (AI, Web3, Cloud Native, etc.)"
+            ]
          },
          {
-            "title": "Engage with Experts",
-            "content": "Q&A segments provide direct interaction and learning opportunities with panelists."
-         },
-         {
-            "title": "Stay Ahead of Trends",
-            "content": "Panels cover the most relevant, emerging themes in open source and tech."
+            "type": "simple",
+            "title": "Panel Sponsorship Opportunities",
+            "items": [
+               "Prominent Branding: Showcased during the session for high visibility.",
+               "Thought Leadership: Align your brand with forward-thinking FOSS topics.",
+               "Direct Participation: Eligible sponsor reps may join panels.",
+               "High Engagement: Panels draw peak interest — great exposure guaranteed."
+            ]
          }
-      ],
-      "themes": [
-         "The Future of Open Source Governance & Sustainability",
-         "Building Inclusive Communities: Diversity, Equity & Belonging in FOSS",
-         "Emerging Technologies & Open Source's Role (AI, Web3, Cloud Native, etc.)"
-      ],
-      "sponsorship": [
-         "Prominent Branding: Showcased during the session for high visibility.",
-         "Thought Leadership: Align your brand with forward-thinking FOSS topics.",
-         "Direct Participation: Eligible sponsor reps may join panels.",
-         "High Engagement: Panels draw peak interest — great exposure guaranteed."
       ],
       "contact": "sponsors@fosster.in",
       "schedule": "Dates, times, and themes will be included in the official agenda."
@@ -41,16 +55,26 @@
       "title": "Job Fair",
       "date": "Sept 12, 2025",
       "description": "The Recruitment Zone at FOSSter 2025 is a hub where tech companies and FOSS enthusiasts meet. Held during peak networking hours, it offers rich face-to-face connections and career-changing opportunities for all.",
-      "attendeeBenefits": [
-         "Meet Top Companies: Connect with companies actively hiring open-source talent across industries.",
-         "Explore Career Paths: Discover roles and internships aligned with your passion for FOSS.",
-         "Showcase Your Skills: Stand out with your GitHub, FOSS projects, and community contributions.",
-         "Expand Your Network: Meet recruiters and professionals from across the open-source world."
-      ],
-      "companyBenefits": [
-         "Access Targeted Talent: Reach a qualified, open-source-focused audience of developers and contributors.",
-         "Showcase Your Brand: Highlight your FOSS initiatives, work culture, and opportunities.",
-         "Boost Employer Visibility: Engage during peak networking hours and enhance your reputation in the FOSS ecosystem."
+      "sections": [
+         {
+            "type": "simple",
+            "title": "What You Get",
+            "items": [
+               "Meet Top Companies: Connect with companies actively hiring open-source talent across industries.",
+               "Explore Career Paths: Discover roles and internships aligned with your passion for FOSS.",
+               "Showcase Your Skills: Stand out with your GitHub, FOSS projects, and community contributions.",
+               "Expand Your Network: Meet recruiters and professionals from across the open-source world."
+            ]
+         },
+         {
+            "type": "simple",
+            "title": "For Companies",
+            "items": [
+               "Access Targeted Talent: Reach a qualified, open-source-focused audience of developers and contributors.",
+               "Showcase Your Brand: Highlight your FOSS initiatives, work culture, and opportunities.",
+               "Boost Employer Visibility: Engage during peak networking hours and enhance your reputation in the FOSS ecosystem."
+            ]
+         }
       ],
       "contact": "jobs@fosster.in",
       "schedule": "Job Fair timings will be shared in the agenda."
@@ -60,37 +84,51 @@
       "title": "Open Source 101",
       "date": "Sept 14, 2025",
       "description": "Understand what open source is, why it matters, and how to be a part of it — no experience needed.",
-      "highlights": [
+      "ledBy": "AmFOSS — India's largest student-run tech club",
+      "sections": [
          {
-            "title": "Demystify Open Source",
-            "description": "Understand what open source is, why it matters, and how to be a part of it — no experience needed."
+            "type": "cards",
+            "title": "What You'll Learn",
+            "items": [
+               {
+                  "title": "Demystify Open Source",
+                  "content": "Understand what open source is, why it matters, and how to be a part of it — no experience needed."
+               },
+               {
+                  "title": "Master Essential Tools",
+                  "content": "Learn Git and GitHub through step-by-step, hands-on guidance with version control and collaboration workflows."
+               },
+               {
+                  "title": "Make Your First Contribution",
+                  "content": "Find beginner-friendly projects, understand contribution flow, and submit your first Pull Request."
+               },
+               {
+                  "title": "Join the Community",
+                  "content": "Explore open-source etiquette and best practices for engaging with global developer communities."
+               }
+            ]
          },
          {
-            "title": "Master Essential Tools",
-            "description": "Learn Git and GitHub through step-by-step, hands-on guidance with version control and collaboration workflows."
+            "type": "list",
+            "title": "Learning Outcomes",
+            "items": [
+               "Core open-source concepts, licenses, and philosophy",
+               "Intro to Git: version control, branching, committing, and merging",
+               "GitHub basics: repositories, issues, pull requests, and workflows",
+               "Finding beginner-friendly projects to contribute to",
+               "Community etiquette and best practices"
+            ]
          },
          {
-            "title": "Make Your First Contribution",
-            "description": "Find beginner-friendly projects, understand contribution flow, and submit your first Pull Request."
-         },
-         {
-            "title": "Join the Community",
-            "description": "Explore open-source etiquette and best practices for engaging with global developer communities."
+            "type": "list",
+            "title": "Who Should Attend",
+            "items": [
+               "Students from any discipline",
+               "Newcomers to programming or tech",
+               "Curious minds exploring open source",
+               "Anyone ready to make their first FOSS contribution"
+            ]
          }
-      ],
-      "learning": [
-         "Core open-source concepts, licenses, and philosophy",
-         "Intro to Git: version control, branching, committing, and merging",
-         "GitHub basics: repositories, issues, pull requests, and workflows",
-         "Finding beginner-friendly projects to contribute to",
-         "Community etiquette and best practices"
-      ],
-      "ledBy": "AmFOSS — India’s largest student-run tech club",
-      "whoShouldAttend": [
-         "Students from any discipline",
-         "Newcomers to programming or tech",
-         "Curious minds exploring open source",
-         "Anyone ready to make their first FOSS contribution"
       ],
       "schedule": "Timings and registration details will be announced in the official agenda."
    },
@@ -99,29 +137,39 @@
       "title": "Speaker Sessions",
       "date": "Sept 16, 2025",
       "description": "Absorb insights directly from seasoned professionals and core maintainers of key open-source projects.",
-      "highlights": [
+      "proposalCall": "We're now accepting proposals for 1-hour sessions. Submit your title, abstract, and bio.",
+      "sections": [
          {
-            "title": "Learn from the Best",
-            "description": "Absorb insights directly from seasoned professionals and core maintainers of key open-source projects."
+            "type": "cards",
+            "title": "Session Benefits",
+            "items": [
+               {
+                  "title": "Learn from the Best",
+                  "content": "Absorb insights directly from seasoned professionals and core maintainers of key open-source projects."
+               },
+               {
+                  "title": "Deep Dive into Topics",
+                  "content": "Each session offers a focused, hour-long exploration of technical and community-driven challenges."
+               },
+               {
+                  "title": "Ignite Inspiration",
+                  "content": "Hear the stories of innovators making an impact and walk away motivated to build your own path."
+               },
+               {
+                  "title": "Broaden Your Perspective",
+                  "content": "Understand community dynamics, collaboration strategies, and the broader impact of open-source development."
+               }
+            ]
          },
          {
-            "title": "Deep Dive into Topics",
-            "description": "Each session offers a focused, hour-long exploration of technical and community-driven challenges."
-         },
-         {
-            "title": "Ignite Inspiration",
-            "description": "Hear the stories of innovators making an impact and walk away motivated to build your own path."
-         },
-         {
-            "title": "Broaden Your Perspective",
-            "description": "Understand community dynamics, collaboration strategies, and the broader impact of open-source development."
+            "type": "keyValue",
+            "title": "Session Lineup",
+            "items": [
+               { "key": "talks", "value": "4" },
+               { "key": "maintainerSessions", "value": "3" }
+            ]
          }
       ],
-      "lineup": {
-         "talks": 4,
-         "maintainerSessions": 3
-      },
-      "proposalCall": "We’re now accepting proposals for 1-hour sessions. Submit your title, abstract, and bio.",
       "schedule": "Timing details and dedicated tracks will be part of the official agenda."
    },
    "tech-workshops": {
@@ -130,22 +178,36 @@
       "date": "Sept 17-18, 2025",
       "intro": "Unlock New Skills. Dive Hands-On.",
       "what": "Gain real-world experience with open-source tools through hands-on exercises led by experts.",
-      "structure": {
-         "totalWorkshops": 4,
-         "distribution": "2 per day (Day 1: A & B, Day 2: C & D)",
-         "format": "Hands-on, guided, and practical sessions",
-         "pricing": {
-            "general": 699,
-            "elitePass": 299,
-            "standardPass": 399
+      "sections": [
+         {
+            "type": "keyValue",
+            "title": "Workshop Structure",
+            "items": [
+               { "key": "totalWorkshops", "value": "4" },
+               { "key": "distribution", "value": "2 per day (Day 1: A & B, Day 2: C & D)" },
+               { "key": "format", "value": "Hands-on, guided, and practical sessions" }
+            ]
+         },
+         {
+            "type": "keyValue",
+            "title": "Pricing",
+            "items": [
+               { "key": "general", "value": "₹699" },
+               { "key": "elitePass", "value": "₹299" },
+               { "key": "standardPass", "value": "₹399" }
+            ]
+         },
+         {
+            "type": "list",
+            "title": "Featured Technologies & Topics",
+            "items": [
+               "Git & Advanced Version Control",
+               "Docker & Containerization",
+               "Kubernetes Orchestration",
+               "Python / JavaScript Frameworks",
+               "Open-Source Data Management Tools"
+            ]
          }
-      },
-      "topics": [
-         "Git & Advanced Version Control",
-         "Docker & Containerization",
-         "Kubernetes Orchestration",
-         "Python / JavaScript Frameworks",
-         "Open-Source Data Management Tools"
       ],
       "schedule": "Final schedule will be published in the official agenda."
    },
@@ -154,35 +216,49 @@
       "title": "Workshops",
       "date": "Sept 17-18, 2025",
       "description": "Gain real-world experience with open-source tools through hands-on exercises led by experts.",
-      "highlights": [
+      "sections": [
          {
-            "title": "Practical Skill Building",
-            "description": "Gain real-world experience with open-source tools through hands-on exercises led by experts."
+            "type": "cards",
+            "title": "Workshop Benefits",
+            "items": [
+               {
+                  "title": "Practical Skill Building",
+                  "content": "Gain real-world experience with open-source tools through hands-on exercises led by experts."
+               },
+               {
+                  "title": "Expert Guidance",
+                  "content": "Get personalized support and best practices from seasoned instructors throughout the sessions."
+               },
+               {
+                  "title": "Deep Dives",
+                  "content": "Focus on specific technologies with time to explore advanced techniques and real-world use cases."
+               },
+               {
+                  "title": "Expand Your Toolset",
+                  "content": "Broaden your knowledge in open-source ecosystems like Docker, Kubernetes, Git, and beyond."
+               }
+            ]
          },
          {
-            "title": "Expert Guidance",
-            "description": "Get personalized support and best practices from seasoned instructors throughout the sessions."
+            "type": "keyValue",
+            "title": "Workshop Structure",
+            "items": [
+               { "key": "totalWorkshops", "value": "4" },
+               { "key": "distribution", "value": "2 per day (Day 1: A & B, Day 2: C & D)" },
+               { "key": "format", "value": "Hands-on, guided, and practical sessions" }
+            ]
          },
          {
-            "title": "Deep Dives",
-            "description": "Focus on specific technologies with time to explore advanced techniques and real-world use cases."
-         },
-         {
-            "title": "Expand Your Toolset",
-            "description": "Broaden your knowledge in open-source ecosystems like Docker, Kubernetes, Git, and beyond."
+            "type": "list",
+            "title": "Featured Technologies & Topics",
+            "items": [
+               "Git & Advanced Version Control",
+               "Docker & Containerization",
+               "Kubernetes Orchestration",
+               "Python / JavaScript Frameworks",
+               "Open-Source Data Management Tools"
+            ]
          }
-      ],
-      "structure": {
-         "totalWorkshops": 4,
-         "distribution": "2 per day (Day 1: A & B, Day 2: C & D)",
-         "format": "Hands-on, guided, and practical sessions"
-      },
-      "topics": [
-         "Git & Advanced Version Control",
-         "Docker & Containerization",
-         "Kubernetes Orchestration",
-         "Python / JavaScript Frameworks",
-         "Open-Source Data Management Tools"
       ],
       "schedule": "Final schedule will be published in the official agenda."
    }
