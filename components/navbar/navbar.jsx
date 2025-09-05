@@ -191,7 +191,7 @@ export default function NavBar() {
 
          <div
             ref={navTargetRef}
-            className={`${'fixed bottom-0 z-50'} flex w-full flex-1 justify-center pb-[1.5vw] text-[1.3vw] pointer-events-none`}
+            className={`${'fixed bottom-0 z-50'} pointer-events-none flex w-full flex-1 justify-center pb-[1.5vw] text-[1.3vw] max-md:pb-[3vw] max-md:text-[3.5vw]`}
          >
             <div ref={pillRef}>
                <Pill fill={fill} />

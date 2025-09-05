@@ -5,7 +5,7 @@ import { useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function EventClient({ children }) {
-   const { setOptions, setPersist, setHandleClick } = usePill();
+   const { setOptions, setPersist, setHandleClick, setMode } = usePill();
    const router = useRouter();
 
    const handleRoutes = useCallback(
@@ -26,7 +26,12 @@ export default function EventClient({ children }) {
       ]);
       setPersist(true);
       setHandleClick(() => handleRoutes);
-   }, [setOptions, setPersist, setHandleClick, handleRoutes]);
+      if (window.innerWidth < 680) {
+         setMode(1);
+      } else {
+         setMode(0);
+      }
+   }, [setOptions, setPersist, setHandleClick, handleRoutes, setMode]);
 
    return <div>{children}</div>;
 }

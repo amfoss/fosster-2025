@@ -3,20 +3,14 @@ import Link from 'next/link';
 import { usePill } from '@/app/_contexts/pill';
 
 export default function Pill({ fill }) {
-   const {
-      options,
-      handleClick,
-      selected,
-      setSelected,
-      persist,
-      mode,
-      setMode,
-   } = usePill();
+   const { options, handleClick, selected, setSelected, persist, mode } = usePill();
    const [active, setActive] = useState(0);
    const containerRef = useRef(null);
    const highlightRef = useRef(null);
    const RISE_LEVEL = 0.1;
    const newPercent = useRef(0);
+   const [open, setOpen] = useState(false);
+   const [isAtBottom, setIsAtBottom] = useState(false);
    const timeoutRef = useRef(null); // bad practice
    // Direct DOM mutations (appendChild in handlePillPlacement()) cause the `fill` state to reset without re-render or hooks trigger.
    // Using this ref prevents losing the correct `fill` value. Flex-tape fix
@@ -38,7 +32,7 @@ export default function Pill({ fill }) {
          timeoutRef.current = null;
       }
       const contain = document.getElementById('pill-target');
-      if (!contain) return;
+      if (!contain || !highlightRef.current) return;
 
       highlightRef.current.style.width = `${contain.offsetWidth}px`;
       highlightRef.current.style.transform = `translateX(0px)`;
@@ -47,6 +41,7 @@ export default function Pill({ fill }) {
    const updateActiveHighlight = () => {
       const activeEl = containerRef.current.children[active + 1];
       if (activeEl) {
+         if (!highlightRef.current) return;
          highlightRef.current.style.width = `${activeEl.offsetWidth}px`;
          highlightRef.current.style.transform = `translateX(${activeEl.offsetLeft}px)`;
       }
@@ -55,6 +50,7 @@ export default function Pill({ fill }) {
    const resetHighlight = () => {
       const activeEl = containerRef.current.children[selected + 1];
       if (activeEl) {
+         if (!highlightRef.current) return;
          highlightRef.current.style.width = `${activeEl.offsetWidth}px`;
          highlightRef.current.style.transform = `translateX(${activeEl.offsetLeft}px)`;
       }
@@ -102,17 +98,14 @@ export default function Pill({ fill }) {
 
          newPercent.current = linearPercent;
          const containerRect = containerRef.current.getBoundingClientRect();
+
          let desiredScale = newPercent.current + 1;
-         let scaledWidth = containerRect.width * 2;
-         if (scaledWidth > window.innerWidth) {
-            console.log('this will exceed');
+         if (containerRect.width * 2 > window.innerWidth) {
             desiredScale =
                (newPercent.current *
                   (window.innerWidth - containerRect.width)) /
                   containerRect.width +
                1;
-         } else {
-            console.log('this WONT exceed');
          }
          containerRef.current.animate(
             [
@@ -131,9 +124,11 @@ export default function Pill({ fill }) {
          ([entry]) => {
             if (entry.isIntersecting) {
                window.addEventListener('scroll', onScroll);
+               setIsAtBottom(false);
             } else {
                window.removeEventListener('scroll', onScroll);
                onScroll(); // fallback
+               setIsAtBottom(true);
             }
          },
          { root: null, rootMargin: '0px', threshold: 0 }
@@ -155,7 +150,11 @@ export default function Pill({ fill }) {
 
    return (
       <div
-         className={`relative inline-flex overflow-hidden rounded-full bg-gray-400/15 backdrop-blur-xl ${fill ? 'space-x-[-5.4vw] px-[1.9vw]' : ''} pointer-events-auto`}
+         className={
+            mode != 1
+               ? `relative inline-flex overflow-hidden rounded-full bg-gray-400/15 backdrop-blur-xl ${fill ? 'space-x-[-5.4vw] px-[1.9vw]' : ''} pointer-events-auto`
+               : 'pointer-events-auto relative gap-y-[1vw] rounded-full bg-gray-400/15 backdrop-blur-xl'
+         }
          ref={containerRef}
          onMouseLeave={() => {
             if (!fillGaurd.current && persist) {
@@ -170,16 +169,58 @@ export default function Pill({ fill }) {
                className="backdrop-xl absolute top-0 left-0 h-full rounded-full bg-blue-900/50 transition-all duration-300"
             />
          ) : (
-            <></>
+            <button
+               onClick={() => setOpen(!open)}
+               className="relative z-20 flex items-center justify-center rounded-full px-[3vw] py-[2vw] text-white max-md:px-[6vw] max-md:py-[4vw]"
+            >
+               <span
+                  className={`absolute block h-0.5 w-6 bg-white transition-all duration-300 ${
+                     open ? 'rotate-45' : '-translate-y-2'
+                  }`}
+               />
+               ff
+               <span
+                  className={`absolute block h-0.5 w-6 bg-white transition-all duration-300 ${
+                     open ? 'opacity-0' : ''
+                  }`}
+               />
+               <span
+                  className={`absolute block h-0.5 w-6 bg-white transition-all duration-300 ${
+                     open ? '-rotate-45' : 'translate-y-2'
+                  }`}
+               />
+            </button>
          )}
 
-         {options.map((option, i) =>
-            option.link != undefined ? (
+         {options.map((option, i) => {
+            const factor = window.innerWidth > 680 ? 0.065 : 0.14;
+            const distance = isAtBottom
+               ? (i + 1) * factor * window.innerWidth
+               : (Math.floor(i / 2) + 1) * factor * window.innerWidth;
+
+            const translateY = open
+               ? !isAtBottom
+                  ? i % 2 === 0
+                     ? `-${distance}px`
+                     : `${distance}px`
+                  : `-${distance}px`
+               : '0px';
+            return option.link != undefined ? (
                <Link
                   key={i}
                   onMouseEnter={() => setActive(i)}
-                  className={`relative z-10 px-[3vw] py-[2vw]`}
+                  className={`z-10 px-[3vw] py-[2vw] duration-300 max-md:px-[6vw] max-md:py-[4vw] ${mode == 1 ? 'absolute left-1/2 -translate-x-1/2 rounded-full bg-amber-950 whitespace-nowrap hover:bg-blue-900/50' : 'relative'}`}
                   href={option.link}
+                  style={
+                     mode == 1
+                        ? {
+                             top: '0%',
+                             transform: `translate(0%, ${translateY})`,
+                             opacity: open ? 1 : 0,
+                             pointerEvents: open ? 'auto' : 'none',
+                          }
+                        : {}
+                  }
                >
                   {option.label}
                </Link>
@@ -187,18 +228,29 @@ export default function Pill({ fill }) {
                <button
                   key={i}
                   onMouseEnter={() => setActive(i)}
+                  style={
+                     mode == 1
+                        ? {
+                             top: '0%',
+                             transform: `translate(0%, ${translateY})`,
+                             opacity: open ? 1 : 0,
+                             pointerEvents: open ? 'auto' : 'none',
+                          }
+                        : {}
+                  }
                   onClick={() => {
                      setSelected(i);
+                     setOpen(false);
                      if (option.value !== undefined) {
                         handleClick(option.value);
                      }
                   }}
-                  className={`relative z-10 px-[3vw] py-[2vw]`}
+                  className={`z-10 px-[3vw] py-[2vw] duration-300 max-md:px-[6vw] max-md:py-[4vw] ${mode == 1 ? 'absolute left-1/2 -translate-x-1/2 rounded-full bg-amber-950 whitespace-nowrap hover:bg-blue-900/50' : 'relative'}`}
                >
                   {option.label}
                </button>
-            )
-         )}
+            );
+         })}
       </div>
    );
 }

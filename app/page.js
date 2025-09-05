@@ -10,14 +10,15 @@ import { useEffect } from 'react';
 import About from '@/components/about/about';
 
 export default function Home() {
-   const { setOptions, setPersist } = usePill();
+   const { setOptions, setPersist, setMode } = usePill();
    useEffect(() => {
       setOptions([
          { label: 'Register', link: '/attend' },
          { label: 'Now', link: '/attend' },
       ]);
       setPersist(false);
-   }, [setOptions, setPersist]);
+      setMode(0);
+   }, [setOptions, setPersist, setMode]);
    return (
       <div id="top" className="min-h-screen">
          <About />
