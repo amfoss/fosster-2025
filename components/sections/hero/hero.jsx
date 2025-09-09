@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import CircularText from '../ui/circular_text';
+import CircularText from '@/components/ui/circular_text';
 
 export default function Hero() {
    const pathname = usePathname();

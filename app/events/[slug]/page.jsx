@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import EventPage from '@/components/events/event_shared';
+import EventPage from '@/components/sections/events/event_shared';
 import events from '@/data/events.json';
 
 export default function Event({ params }) {

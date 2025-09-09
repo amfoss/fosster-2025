@@ -74,17 +74,17 @@ export default function SlidingCards({ reason }) {
    return (
       <div
          ref={ref}
-         className="flex min-h-[20vw] flex-1 justify-center rounded-[5vw] max-md:rounded-[10vw]"
+         className="flex min-h-[17vw] flex-1 justify-center rounded-[5vw] max-md:rounded-[10vw]"
       >
          {/* <div className="absolute z-10 bg-amber-300 text-black">
             {newPercent.current}
          </div> */}
          <div
             ref={cardDesc}
-            className="flex min-w-[49.5vw] transform rounded-[5vw] bg-[#1b1b1f] p-[5vw] duration-100 will-change-transform max-md:rounded-[10vw] max-md:p-[10vw]"
+            className="mr-[-10vw] flex min-w-[59.5vw] transform rounded-[5vw] bg-[#1b1b1f] p-[3.8vw] pr-[13.8vw] duration-100 will-change-transform max-md:rounded-[10vw] max-md:p-[10vw]"
          >
             <div className="flex items-center pr-[5vw]">Icon</div>
-            <div className="flex flex-1 flex-col text-[1.3vw] max-md:text-[4vw]">
+            <div className="flex flex-1 flex-col text-[1.2vw] max-md:text-[4vw]">
                <p className="flex-1 font-semibold">{reason.reason.heading}</p>
                <p className=" ">{reason.reason.desc}</p>
             </div>

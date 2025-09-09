@@ -1,6 +1,6 @@
 import CircularText from '@/components/ui/circular_text';
-import SlidingCards from '@/components/why_attend_foster/sliding_cards';
-import { reasons } from '../../data/jsonData';
+import SlidingCards from '@/components/sections/why_attend_foster/sliding_cards';
+import { reasons } from '@/data/jsonData';
 export default function WhyFosster() {
    return (
       <div

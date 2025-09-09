@@ -12,7 +12,8 @@ export default function NavBar() {
    const navTargetRef = useRef(null);
    const pathname = usePathname();
    const navLinks = [
-      { label: 'about', link: '/#about' },
+      // { label: 'about', link: '/#about' },
+      { label: 'events', link: '/#events' },
       { label: 'venue', link: '/venue' },
       { label: 'contact', link: '/#contact-us' },
    ];

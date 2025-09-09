@@ -1,13 +1,13 @@
 import Globe from '@/components/svg/globe';
-import Smiley from '../svg/smiley';
-import Heart from '../svg/heart';
+import Smiley from '@/components/svg/smiley';
+import Heart from '@/components/svg/heart';
 import Image from 'next/image';
 
 export default function About() {
    return (
       <div
          id="about"
-         className="m-[0.5vw] flex flex-col gap-y-[1vw] rounded-[5vw] bg-[#1c1c1c] p-[5vw] py-[2.5vw] max-md:gap-y-[2vw] max-md:rounded-[10vw] max-md:p-[10vw]"
+         className="m-[0.5vw] flex flex-col gap-y-[1vw] rounded-[5vw] bg-[#1c1c1c] p-[5vw] pt-[2.5vw] max-md:gap-y-[2vw] max-md:rounded-[10vw] max-md:p-[10vw]"
       >
          <div className="flex items-center">
             <h1 className="flex items-center gap-x-[1vw] text-[6.5vw] font-semibold italic max-md:text-[13vw]">
@@ -38,7 +38,7 @@ export default function About() {
                   <br />
                </p>
                <div className="flex min-w-[30vw] flex-1 justify-end">
-                  <div className="-ml-[10vw] text-[1vw] text-gray-300 max-md:text-[4vw] md:max-w-[30vw]">
+                  <div className="-ml-[10vw] text-[1.2vw] text-gray-300 max-md:text-[4vw] md:max-w-[30vw]">
                      <p>
                         Born out of the amFOSS community at Amrita Vishwa
                         Vidyapeetham, FOSSter builds on over a decade of
@@ -55,7 +55,7 @@ export default function About() {
                </div>
             </div>
          </div>
-         <div className="flex max-h-[10vw] justify-center">
+         <div className="mt-[5vw] flex max-h-[10vw] justify-center md:hidden">
             <div className="flex h-full min-w-[25vw] space-x-[-2.5vw]">
                <Smiley />
                <Heart />

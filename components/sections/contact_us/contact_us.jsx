@@ -1,12 +1,12 @@
 import CircularText from '@/components/ui/circular_text';
-import Globe from '../svg/globe';
-import ArrowDown from '../svg/arrow';
+import Globe from '@/components/svg/globe';
+import ArrowDown from '@/components/svg/arrow';
 import Link from 'next/link';
 
 export default function ContactUs() {
    const links = [
-      { label: 'about', targetHash: 'why-attend' },
-      { label: 'venue', link: '/' },
+      { label: 'events', targetHash: 'events' },
+      { label: 'venue', link: '/venue' },
       { label: 'sponsor', link: '/' },
    ];
    return (
@@ -25,10 +25,10 @@ export default function ContactUs() {
                      </p>
 
                      <div className="mt-[1.5vw] flex gap-x-[1vw] text-[1.5vw] max-md:gap-y-[1vw] max-md:text-[4vw]">
-                        <div className="rounded-full border border-[#fffc58] px-[1.5vw] py-[0.5vw] max-md:flex max-md:justify-center max-md:py-[2vw]">
-                           <span className="">+12345566</span>
+                        <div className="rounded-full border border-[#fffc58] px-[1.5vw] py-[0.5vw] duration-150 hover:bg-[#fffc58] hover:text-[#1b1b1f] max-md:flex max-md:justify-center max-md:px-[4vw] max-md:py-[2vw]">
+                           <span className="">+12 34556677</span>
                         </div>
-                        <div className="rounded-full border border-[#fffc58] px-[1.5vw] py-[0.5vw] max-md:flex max-md:justify-center max-md:py-[2vw]">
+                        <div className="rounded-full border border-[#fffc58] px-[1.5vw] py-[0.5vw] duration-150 hover:bg-[#fffc58] hover:text-[#1b1b1f] max-md:flex max-md:justify-center max-md:px-[4vw] max-md:py-[2vw]">
                            <span className="">hair@gmail.com</span>
                         </div>
                      </div>
@@ -37,7 +37,7 @@ export default function ContactUs() {
                         {[1, 2, 3].map((index, id) => (
                            <div
                               key={id}
-                              className="flex max-h-[3.5vw] justify-center rounded-full border border-[#fffc58] p-[0.5vw] max-md:max-h-[10.5vw] max-md:flex-1 max-md:p-[2vw]"
+                              className="flex max-h-[3.5vw] justify-center rounded-full border border-[#fffc58] p-[0.5vw] duration-150 hover:bg-[#fffc58] hover:text-[#1b1b1f] max-md:max-h-[10.5vw] max-md:flex-1 max-md:p-[2vw]"
                            >
                               <Globe />
                            </div>

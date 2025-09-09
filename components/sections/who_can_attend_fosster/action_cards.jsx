@@ -1,8 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import ArrowDown from '../svg/arrow';
-import { whoCanAttendData } from '../../data/jsonData';
+import ArrowDown from '@/components/svg/arrow';
+import { whoCanAttendData } from '@/data/jsonData';
 
 export default function ActionCards() {
    const [page, setPage] = useState(0);
@@ -58,13 +58,13 @@ export default function ActionCards() {
                <div className="flex gap-x-[1vw]">
                   <button
                      onClick={handlePrev}
-                     className="flex size-[6.7vw] rotate-90 items-center justify-center rounded-full bg-[#d9d9d9] p-[2vw] text-black transition-colors hover:bg-gray-400 max-md:size-[20vw] max-md:p-[4vw]"
+                     className="flex size-[6.7vw] rotate-90 items-center justify-center rounded-full bg-[#d9d9d9] p-[2vw] text-black transition-colors hover:bg-gray-400 max-md:size-[20vw] max-md:p-[6vw]"
                   >
                      <ArrowDown />
                   </button>
                   <button
                      onClick={handleNext}
-                     className="flex size-[6.7vw] -rotate-90 items-center justify-center rounded-full bg-[#d9d9d9] p-[2vw] text-black transition-colors hover:bg-gray-400 max-md:size-[20vw] max-md:p-[4vw]"
+                     className="flex size-[6.7vw] -rotate-90 items-center justify-center rounded-full bg-[#d9d9d9] p-[2vw] text-black transition-colors hover:bg-gray-400 max-md:size-[20vw] max-md:p-[6vw]"
                   >
                      <ArrowDown />
                   </button>

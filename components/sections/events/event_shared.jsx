@@ -9,12 +9,12 @@ export default function EventPage({ event }) {
             return (
                <div
                   key={index}
-                  className="grid w-full grid-cols-2 gap-[0.5vw] text-black"
+                  className="grid w-full grid-cols-2 gap-[0.5vw] text-black max-md:grid-cols-1"
                >
                   {items.map((item, i) => (
                      <div
                         key={i}
-                        className="flex flex-col rounded-[2.5vw] bg-yellow-200 p-[2.5vw] text-[1.3vw] max-md:rounded-[5vw] max-md:p-[5vw] max-md:text-[4vw]"
+                        className="flex flex-col rounded-[2.5vw] bg-[#1b1b1f] p-[2.5vw] text-[1.3vw] text-[#ffffff] max-md:rounded-[10vw] max-md:px-[10vw] max-md:py-[5vw] max-md:text-[4vw]"
                      >
                         <p className="font-semibold">{item.title}</p>
                         <p className="">{item.content}</p>
@@ -27,7 +27,7 @@ export default function EventPage({ event }) {
             return (
                <div
                   key={index}
-                  className="rounded-[2.5vw] bg-amber-200 p-[2.5vw] text-[1.3vw] text-black max-md:p-[5vw] max-md:text-[4vw]"
+                  className="rounded-[2.5vw] bg-[#f1efef] p-[2.5vw] text-[1.3vw] text-[#00192e] max-md:p-[5vw] max-md:text-[4vw]"
                >
                   <p className="mb-[0.5vw] text-[1vw] font-bold tracking-tight max-md:text-[4vw]">
                      {title}
@@ -47,7 +47,7 @@ export default function EventPage({ event }) {
             return (
                <div
                   key={index}
-                  className="rounded-[2.5vw] bg-amber-200 p-[2.5vw] text-[1.3vw] text-black max-md:p-[5vw] max-md:text-[4vw]"
+                  className="rounded-[2.5vw] bg-[#1b1b1f] p-[2.5vw] text-[1.3vw] text-[#fff480] max-md:p-[5vw] max-md:text-[4vw]"
                >
                   <p className="mb-[0.5vw] text-[1vw] font-bold tracking-tight max-md:text-[4vw]">
                      {title}
@@ -64,7 +64,7 @@ export default function EventPage({ event }) {
             return (
                <div
                   key={index}
-                  className="rounded-[2.5vw] bg-amber-200 p-[2.5vw] text-[1.3vw] text-black max-md:p-[5vw] max-md:text-[4vw]"
+                  className="rounded-[2.5vw] bg-[#1b1b1f] p-[2.5vw] text-[1.3vw] text-[#fff480] max-md:p-[5vw] max-md:text-[4vw]"
                >
                   <p className="mb-[0.5vw] text-[1vw] font-bold tracking-tight max-md:text-[4vw]">
                      {title}
