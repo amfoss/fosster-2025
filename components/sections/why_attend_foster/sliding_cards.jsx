@@ -81,7 +81,7 @@ export default function SlidingCards({ reason }) {
          </div> */}
          <div
             ref={cardDesc}
-            className="mr-[-10vw] flex min-w-[59.5vw] transform rounded-[5vw] bg-[#1b1b1f] p-[3.8vw] pr-[13.8vw] duration-100 will-change-transform max-md:rounded-[10vw] max-md:p-[10vw]"
+            className="flex min-w-[59.5vw] transform rounded-[5vw] bg-[#1b1b1f] p-[3.8vw] duration-100 will-change-transform max-md:rounded-[10vw] max-md:p-[10vw] md:mr-[-10vw] md:pr-[13.8vw]"
          >
             <div className="flex items-center pr-[5vw]">Icon</div>
             <div className="flex flex-1 flex-col text-[1.2vw] max-md:text-[4vw]">

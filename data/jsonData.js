@@ -118,7 +118,7 @@ export const Passes = [
    {
       pass: 'Standard Pass',
       cost: '599',
-      desc: 'Our foundational ticket for comprehensive access to the event.',
+      desc: 'Essential ticket with full event access.',
       benifits: [
          'Access to All Conference Tracks',
          'Entry to Exhibitor Booths',
@@ -130,7 +130,7 @@ export const Passes = [
    {
       pass: 'Elite Pass',
       cost: '899',
-      desc: 'Designed to enhance your experience with additional benefits, including workshop access.',
+      desc: 'Enhanced access with workshops and extras.',
       benifits: [
          'Access to All Conference Tracks',
          'Entry to Exhibitor Booths',
@@ -145,7 +145,7 @@ export const Passes = [
    {
       pass: 'Premium Pass',
       cost: '1,499',
-      desc: 'A limited-number, exclusive pass offering the highest level of access and networking opportunities.',
+      desc: 'Exclusive pass with top-tier privileges.',
       benifits: [
          'Access to All Conference Tracks',
          'Entry to Exhibitor Booths',
@@ -158,8 +158,9 @@ export const Passes = [
    },
    {
       pass: 'Group Pass',
-      cost: '3,499 for 5',
-      desc: 'A discounted bundle for teams or college groups attending together.',
+      cost: '3,499',
+      subText: 'for 5',
+      desc: 'Discounted package for teams and groups.',
       benifits: [
          'Access to All Conference Tracks (5)',
          'Entry to Exhibitor Booths (5)',
@@ -169,3 +170,4 @@ export const Passes = [
       ],
    },
 ];
+

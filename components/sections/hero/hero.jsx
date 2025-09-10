@@ -39,7 +39,7 @@ export default function Hero() {
                   </p>
                   <div
                      id="pill-target"
-                     className="flex min-h-[7.3vw] items-center justify-center rounded-full text-[2.3vw] font-normal tracking-normal max-md:text-[4.6vw] md:mt-[-0.5vw] md:min-w-full md:flex-1"
+                     className="flex min-h-[7.3vw] items-center justify-center rounded-full text-[2.3vw] font-normal tracking-normal max-md:min-h-[14.6vw] max-md:text-[4.6vw] md:mt-[-0.5vw] md:min-w-full md:flex-1"
                   ></div>
                </div>
                <div className="text-[7vw] font-black max-md:text-[14vw]">
