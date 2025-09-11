@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 
-export default function SlidingCards({ reason }) {
+export default function SlidingCards({ reason, icons }) {
    const ref = useRef(null);
    const RISE_LEVEL = 0.5;
    const cardDesc = useRef(null);
@@ -81,20 +81,26 @@ export default function SlidingCards({ reason }) {
          </div> */}
          <div
             ref={cardDesc}
-            className="flex min-w-[59.5vw] transform rounded-[5vw] bg-[#1b1b1f] p-[3.8vw] duration-100 will-change-transform max-md:rounded-[10vw] max-md:p-[10vw] md:mr-[-10vw] md:pr-[13.8vw]"
+            className="flex min-w-[49.5vw] transform rounded-[5vw] bg-[#1b1b1f] p-[3.8vw] pr-[5vw] duration-100 will-change-transform max-md:rounded-[10vw] max-md:p-[10vw]"
          >
-            <div className="flex items-center pr-[5vw]">Icon</div>
+            <div className="mr-[3.8vw] flex min-w-[3vw] items-center max-md:mr-[10vw] max-md:min-w-[9vw]">
+               {reason.icon in icons ? icons[reason.icon] : 'Icon'}
+            </div>
             <div className="flex flex-1 flex-col text-[1.2vw] max-md:text-[4vw]">
-               <p className="flex-1 font-semibold">{reason.reason.heading}</p>
+               <p className="flex-1 font-semibold max-md:mb-[3vw]">
+                  {reason.reason.heading}
+               </p>
                <p className=" ">{reason.reason.desc}</p>
             </div>
          </div>
+         <div className="mx-[-5vw] min-w-[10vw] bg-[#1b1b1f] max-md:hidden"></div>
          <div
             ref={cardMain}
             className="flex min-w-[49.5vw] transform rounded-[5vw] bg-[#a5a1ff] duration-100 will-change-transform max-md:hidden"
          >
-            <div className="flex flex-1 items-center justify-center text-black">
-               icon
+            <div className="flex flex-1 flex-col items-center justify-center space-y-[-0.75vw] text-black">
+               <p className="text-[1.2vw] font-semibold">we are</p>
+               <p className="text-[3.5vw] font-black italic">fosster</p>
             </div>
          </div>
       </div>

@@ -12,8 +12,8 @@ export const events = [
          "Live, moderated session's with experts exploring pivotal open-source topics, fostering creative thinking, collaborative solutions, and insights on today’s most relevant, emerging themes.",
    },
    {
-      title: 'Tech Workshops',
-      link: 'tech-workshops',
+      title: 'Workshops',
+      link: 'workshops',
       description:
          'Hands-on sessions with experts to build real-world open-source skills, with personalized support, best practices, and practical experience to strengthen contributions to projects.',
    },
@@ -39,35 +39,35 @@ export const events = [
 
 export const reasons = [
    {
-      icon: '',
+      icon: 'userGroup',
       reason: {
          heading: 'Build Meaningful Connections',
          desc: 'Connect with open-source leaders and innovators who are shaping today’s technologies. Foster meaningful relationships and collaborate across various domains.',
       },
    },
    {
-      icon: '',
+      icon: 'eye',
       reason: {
          heading: 'Insights from Experts',
          desc: 'Learn from real-world projects and expert contributors. Discover how open source powers different domains while boosting your problem-solving and technical skills.',
       },
    },
    {
-      icon: '',
+      icon: 'blocks',
       reason: {
          heading: 'Practice, Build, Contribute',
          desc: 'Dive into the world of Open Source with hands-on tools, workflows, and platforms. From Git to CI/CD and modern frameworks, apply your skills into real-world projects.',
       },
    },
    {
-      icon: '',
+      icon: 'compass',
       reason: {
          heading: 'Discover Opportunities',
          desc: 'Explore open-source opportunities: From Internships and Collaborations to Careers. Discover how your contributions can grow to have a Global Impact',
       },
    },
    {
-      icon: '',
+      icon: 'globe',
       reason: {
          heading: 'Join the Global Community',
          desc: 'Join a diverse, global community built on collaboration. Celebrate contributions, share knowledge, and shape an inclusive, sustainable, impactful open-source ecosystem',
@@ -170,4 +170,3 @@ export const Passes = [
       ],
    },
 ];
-

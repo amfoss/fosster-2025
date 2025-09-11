@@ -11,7 +11,7 @@ export function PillProvider({ children }) {
    const [persist, setPersist] = useState(true);
    // 0 - normal
    // 1 - menu
-   // 2 - paginated
+   // 2 - paginated (todo)
    const [mode, setMode] = useState(0);
 
    return (

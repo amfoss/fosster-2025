@@ -1,5 +1,5 @@
 import CircularText from '@/components/ui/circular_text';
-import Globe from '@/components/svg/globe';
+import { GlobeOutline } from '@/components/svg/globe';
 import ArrowDown from '@/components/svg/arrow';
 import Link from 'next/link';
 
@@ -39,7 +39,7 @@ export default function ContactUs() {
                               key={id}
                               className="flex max-h-[3.5vw] justify-center rounded-full border border-[#fffc58] p-[0.5vw] duration-150 hover:bg-[#fffc58] hover:text-[#1b1b1f] max-md:max-h-[10.5vw] max-md:flex-1 max-md:p-[2vw]"
                            >
-                              <Globe />
+                              <GlobeOutline />
                            </div>
                         ))}
                      </div>
@@ -50,7 +50,7 @@ export default function ContactUs() {
                   <div>
                      <CircularText text={'CONTACT US CONTACT US '} radius={4.3}>
                         <div className="flex-1 duration-300 hover:rotate-180">
-                           <Globe />
+                           <GlobeOutline />
                         </div>
                      </CircularText>
                   </div>
@@ -80,10 +80,18 @@ export default function ContactUs() {
                   ))}
                </div>
 
-               <div className="flex w-full rounded-[5vw] bg-[#1b1b1f] p-[2.5vw] max-md:rounded-full max-md:p-[5vw]">
-                  <p className="max-w-full text-[1.2vw] text-gray-400 max-md:text-[4vw]">
-                     Could be a carousal area
+               <div className="flex w-full overflow-hidden rounded-[5vw] bg-[#1b1b1f] p-[2.5vw] text-[5vw] max-md:rounded-full max-md:p-[10vw] max-md:text-[15vw]">
+                  <p className="ml-[-11vw] max-w-full leading-[1vw] font-black whitespace-nowrap text-[#313131] max-md:ml-[-40vw]">
+                     ✦ amFOSS&nbsp;
                   </p>
+                  {[1, 2, 3, 4, 5, 6].map((elem, index) => (
+                     <p
+                        key={index}
+                        className="max-w-full leading-[1vw] font-black whitespace-nowrap text-[#313131]"
+                     >
+                        ✦ amFOSS&nbsp;
+                     </p>
+                  ))}
                </div>
             </div>
 

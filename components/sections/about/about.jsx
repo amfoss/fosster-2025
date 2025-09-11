@@ -1,4 +1,4 @@
-import Globe from '@/components/svg/globe';
+import { GlobeOutline } from '@/components/svg/globe';
 import Smiley from '@/components/svg/smiley';
 import Heart from '@/components/svg/heart';
 import Image from 'next/image';
@@ -59,7 +59,7 @@ export default function About() {
             <div className="flex h-full min-w-[25vw] space-x-[-2.5vw]">
                <Smiley />
                <Heart />
-               <Globe />
+               <GlobeOutline />
             </div>
          </div>
       </div>

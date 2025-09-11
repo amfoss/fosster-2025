@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import ArrowDown from '@/components/svg/arrow';
 import { whoCanAttendData } from '@/data/jsonData';
+import Smiley from '@/components/svg/smiley';
 
 export default function ActionCards() {
    const [page, setPage] = useState(0);
@@ -11,7 +12,9 @@ export default function ActionCards() {
    // responsive items per page
    useEffect(() => {
       const updateItemsPerPage = () => {
-         setItemsPerPage(window.innerWidth < 768 ? 1 : 3);
+         setItemsPerPage(
+            window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3
+         );
       };
       updateItemsPerPage();
       window.addEventListener('resize', updateItemsPerPage);
@@ -55,16 +58,16 @@ export default function ActionCards() {
          <div className="flex flex-1 gap-x-[2.5vw] max-md:flex-col-reverse max-md:gap-y-[6vw]">
             {/* Arrows */}
             <div className="flex flex-col justify-end max-md:items-center">
-               <div className="flex gap-x-[1vw]">
+               <div className="flex gap-x-[1vw] max-lg:flex-col max-lg:gap-y-[1vw] max-md:flex-row">
                   <button
                      onClick={handlePrev}
-                     className="flex size-[6.7vw] rotate-90 items-center justify-center rounded-full bg-[#d9d9d9] p-[2vw] text-black transition-colors hover:bg-gray-400 max-md:size-[20vw] max-md:p-[6vw]"
+                     className="flex size-[6.7vw] rotate-90 items-center justify-center rounded-full bg-[#d9d9d9] p-[2vw] text-black transition-colors hover:bg-gray-400 max-lg:size-[13.4vw] max-md:size-[20vw] max-md:p-[6vw]"
                   >
                      <ArrowDown />
                   </button>
                   <button
                      onClick={handleNext}
-                     className="flex size-[6.7vw] -rotate-90 items-center justify-center rounded-full bg-[#d9d9d9] p-[2vw] text-black transition-colors hover:bg-gray-400 max-md:size-[20vw] max-md:p-[6vw]"
+                     className="flex size-[6.7vw] -rotate-90 items-center justify-center rounded-full bg-[#d9d9d9] p-[2vw] text-black transition-colors hover:bg-gray-400 max-lg:size-[13.4vw] max-md:size-[20vw] max-md:p-[6vw]"
                   >
                      <ArrowDown />
                   </button>
@@ -100,7 +103,9 @@ export default function ActionCards() {
                                     {item.title}
                                  </h2>
                                  <div className="m-[2.5vw] flex justify-center">
-                                    <div className="h-40 w-40 bg-black"></div>
+                                    <div className="h-40 w-40 text-black">
+                                       <Smiley />
+                                    </div>
                                  </div>
                                  <p className="flex-1 text-xl leading-relaxed text-gray-700 max-md:text-[4vw]">
                                     {item.description}

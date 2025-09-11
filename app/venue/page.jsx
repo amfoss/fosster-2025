@@ -5,9 +5,12 @@ import React, { useEffect, useState } from 'react';
 import { usePill } from '@/app/_contexts/pill';
 import { useCallback } from 'react';
 
-const MapComponent = dynamic(() => import('@/components/sections/venue/map_component'), {
-   ssr: false,
-});
+const MapComponent = dynamic(
+   () => import('@/components/sections/venue/map_component'),
+   {
+      ssr: false,
+   }
+);
 
 const travelData = {
    aero: {
@@ -103,7 +106,7 @@ export default function Venue() {
    return (
       <div
          id="Venue"
-         className="flex min-h-screen w-full flex-col bg-[#1b1b1f] p-[5vw] text-white max-md:pt-[20vw]"
+         className="flex min-h-screen w-full flex-col rounded-b-[5vw] bg-[#1b1b1f] p-[5vw] text-white max-md:rounded-b-[10vw] max-md:pt-[20vw]"
       >
          <h1 className="text-left text-4xl font-bold max-md:text-[4vw] md:text-[1.5vw]">
             How to reach the{' '}

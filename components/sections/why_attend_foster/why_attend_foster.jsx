@@ -1,7 +1,19 @@
+import Blocks from '@/components/svg/blocks';
+import Compass from '@/components/svg/compass';
+import Eye from '@/components/svg/eye';
+import { GlobeSolid } from '@/components/svg/globe';
+import UserGroup from '@/components/svg/user_group';
 import CircularText from '@/components/ui/circular_text';
 import SlidingCards from '@/components/sections/why_attend_foster/sliding_cards';
 import { reasons } from '@/data/jsonData';
 export default function WhyFosster() {
+   const icons = {
+      globe: <GlobeSolid />,
+      userGroup: <UserGroup />,
+      eye: <Eye />,
+      compass: <Compass />,
+      blocks: <Blocks />,
+   };
    return (
       <div
          id="why-attend"
@@ -23,7 +35,7 @@ export default function WhyFosster() {
          <div className="flex flex-col gap-y-[0.5vw] max-md:max-w-[100vw] max-md:overflow-hidden">
             {reasons.map((id, index) => (
                <div key={index}>
-                  <SlidingCards reason={reasons[index]} />
+                  <SlidingCards reason={reasons[index]} icons={icons} />
                </div>
             ))}
          </div>

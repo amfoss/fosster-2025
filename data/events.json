@@ -172,45 +172,6 @@
       ],
       "schedule": "Timing details and dedicated tracks will be part of the official agenda."
    },
-   "tech-workshops": {
-      "slug": "tech-workshops",
-      "title": "Tech Workshops at FOSSter 2025",
-      "date": "Sept 17-18, 2025",
-      "intro": "Unlock New Skills. Dive Hands-On.",
-      "what": "Gain real-world experience with open-source tools through hands-on exercises led by experts.",
-      "sections": [
-         {
-            "type": "keyValue",
-            "title": "Workshop Structure",
-            "items": [
-               { "key": "totalWorkshops", "value": "4" },
-               { "key": "distribution", "value": "2 per day (Day 1: A & B, Day 2: C & D)" },
-               { "key": "format", "value": "Hands-on, guided, and practical sessions" }
-            ]
-         },
-         {
-            "type": "keyValue",
-            "title": "Pricing",
-            "items": [
-               { "key": "general", "value": "₹699" },
-               { "key": "elitePass", "value": "₹299" },
-               { "key": "standardPass", "value": "₹399" }
-            ]
-         },
-         {
-            "type": "list",
-            "title": "Featured Technologies & Topics",
-            "items": [
-               "Git & Advanced Version Control",
-               "Docker & Containerization",
-               "Kubernetes Orchestration",
-               "Python / JavaScript Frameworks",
-               "Open-Source Data Management Tools"
-            ]
-         }
-      ],
-      "schedule": "Final schedule will be published in the official agenda."
-   },
    "workshops": {
       "slug": "workshops",
       "title": "Workshops",
@@ -244,8 +205,14 @@
             "title": "Workshop Structure",
             "items": [
                { "key": "totalWorkshops", "value": "4" },
-               { "key": "distribution", "value": "2 per day (Day 1: A & B, Day 2: C & D)" },
-               { "key": "format", "value": "Hands-on, guided, and practical sessions" }
+               {
+                  "key": "distribution",
+                  "value": "2 per day (Day 1: A & B, Day 2: C & D)"
+               },
+               {
+                  "key": "format",
+                  "value": "Hands-on, guided, and practical sessions"
+               }
             ]
          },
          {
