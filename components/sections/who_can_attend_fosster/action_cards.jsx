@@ -49,7 +49,8 @@ export default function ActionCards() {
                      <i>attend</i> FOSSTER
                   </h1>
                   <p className="text-[1.5vw] max-md:text-[4vw] md:max-w-[30vw]">
-                     Anyone can attend honestly, I just want the monaayyy ;{')'}
+                     FOSSter is open to everyone passionate about technology and
+                     collaboration {':)'}
                   </p>
                </div>
             </div>

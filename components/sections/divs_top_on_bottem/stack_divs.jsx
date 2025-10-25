@@ -37,29 +37,30 @@ export default function StackingCards() {
    const cards = [
       {
          number: '01',
-         title: 'First Card',
-         description: 'This is the first stacked card.',
+         title: 'Coming Soon',
+         description: '9:00 AM – 11:00 PM',
          color: '#a5a1ff',
       },
       {
          number: '02',
-         title: 'Second Card',
-         description: 'This is the second stacked card.',
+         title: 'Coming Soon',
+         description: '11:00 AM – 12:30 PM',
          color: '#c3bfc7',
       },
       {
          number: '03',
-         title: 'Third Card',
-         description: 'This is the third stacked card.',
+         title: 'Coming Soon',
+         description: '1:00 PM – 3:00 PM',
          color: '#e1ed90',
       },
       {
          number: '04',
-         title: 'Fourth Card',
-         description: 'This is the fourth stacked card.',
+         title: 'Coming Soon',
+         description: '3:00 PM – 5:00 PM',
          color: '#fffc58',
       },
    ];
+
    const [cardSpacing, setCardSpacing] = useState(5);
 
    useEffect(() => {
@@ -78,7 +79,7 @@ export default function StackingCards() {
             global projects, FOSSter is where <i>contribution</i> meets
             community
          </div>
-         <div className="relative m-[0.5vw] pt-[10vw] max-md:pt-[15vw]">
+         <div className="relative m-[0.5vw] mb-0 pt-[10vw] max-md:pt-[15vw]">
             {cards.map((card, i) => (
                <Card key={i} i={i} {...card} cardSpacing={cardSpacing} />
             ))}

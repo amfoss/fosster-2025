@@ -26,6 +26,8 @@ export default function EventClient({ children }) {
       ]);
       setPersist(true);
       setHandleClick(() => handleRoutes);
+      // TODO: init pill highlight onto selected option after reload
+      // setHandleReload(()=> setHandleReload)
       const updateMode = () => {
          if (window.innerWidth < 680) {
             setMode(1);

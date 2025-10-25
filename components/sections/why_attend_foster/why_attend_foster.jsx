@@ -6,6 +6,7 @@ import UserGroup from '@/components/svg/user_group';
 import CircularText from '@/components/ui/circular_text';
 import SlidingCards from '@/components/sections/why_attend_foster/sliding_cards';
 import { reasons } from '@/data/jsonData';
+
 export default function WhyFosster() {
    const icons = {
       globe: <GlobeSolid />,

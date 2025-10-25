@@ -104,53 +104,58 @@ export default function Venue() {
    }, [setOptions, setHandleClick, handleTabClick, setPersist]);
 
    return (
-      <div
-         id="Venue"
-         className="flex min-h-screen w-full flex-col rounded-b-[5vw] bg-[#1b1b1f] p-[5vw] text-white max-md:rounded-b-[10vw] max-md:pt-[20vw]"
-      >
-         <h1 className="text-left text-4xl font-bold max-md:text-[4vw] md:text-[1.5vw]">
-            How to reach the{' '}
-            <span className="bg-[#a5a1ff] bg-clip-text text-transparent">
-               venue?
-            </span>
-         </h1>
+      <div className="flex flex-col pt-[var(--nav-h)] md:min-h-screen">
+         <div
+            id="Venue"
+            className="mx-[0.5vw] flex flex-1 flex-col rounded-[5vw] bg-[#1b1b1f] p-[5vw] text-white max-md:rounded-b-[10vw]"
+         >
+            <div className="flex flex-1 gap-x-[2.5vw] max-md:flex-col max-md:gap-y-[5vw]">
+               <div
+                  key={selectedTab}
+                  className="flex flex-1 flex-col gap-y-[1vw]"
+               >
+                  <div className="flex flex-col max-md:gap-y-[2vw]">
+                     {/* heading */}
+                     <h1 className="text-left text-4xl font-bold max-md:text-[4vw] md:text-[1.5vw]">
+                        How to reach the{' '}
+                        <span className="bg-[#a5a1ff] bg-clip-text text-transparent">
+                           venue?
+                        </span>
+                     </h1>
 
-         <div className="flex gap-x-[2.5vw] max-md:flex-col max-md:gap-y-[5vw]">
-            <div key={selectedTab} className="flex flex-1 flex-col gap-y-[1vw]">
-               <div className="">
-                  <h2 className="text-[4vw] leading-tight font-semibold text-yellow-200 italic max-md:text-[10vw]">
-                     {data.title}
-                  </h2>
-                  <p className="text-[1.5vw] text-gray-400 max-md:text-[4vw] md:max-w-[40vw]">
-                     {data.description}
-                  </p>
+                     <h2 className="text-[4vw] leading-tight font-semibold text-yellow-200 italic max-md:text-[10vw]">
+                        {data.title}
+                     </h2>
+                     <p className="text-[1.5vw] text-gray-400 max-md:text-[4vw] md:max-w-[40vw]">
+                        {data.description}
+                     </p>
+                  </div>
+                  <div className="space-y-4 rounded-[5vw] bg-[#2a2a2a] p-[4vw] text-[1.5vw] max-md:rounded-[10vw] max-md:p-[8vw] max-md:text-[4vw]">
+                     {data.options &&
+                        data.options.map((opt, idx) => (
+                           <div key={idx} className="flex justify-between">
+                              <span className="font-medium">{opt.type}</span>
+                              <span className="text-gray-300">
+                                 {opt.price} • {opt.time}
+                              </span>
+                           </div>
+                        ))}
+                     {data.stations &&
+                        data.stations.map((s, idx) => (
+                           <div key={idx} className="flex justify-between">
+                              <span className="font-medium">{s.name}</span>
+                              <span className="text-gray-400">{s.note}</span>
+                           </div>
+                        ))}
+                  </div>
                </div>
-               <div className="space-y-4 rounded-[5vw] bg-[#2a2a2a] p-[4vw] text-[1.5vw] max-md:rounded-[10vw] max-md:p-[8vw] max-md:text-[4vw]">
-                  {data.options &&
-                     data.options.map((opt, idx) => (
-                        <div key={idx} className="flex justify-between">
-                           <span className="font-medium">{opt.type}</span>
-                           <span className="text-gray-300">
-                              {opt.price} • {opt.time}
-                           </span>
-                        </div>
-                     ))}
-                  {data.stations &&
-                     data.stations.map((s, idx) => (
-                        <div key={idx} className="flex justify-between">
-                           <span className="font-medium">{s.name}</span>
-                           <span className="text-gray-400">{s.note}</span>
-                        </div>
-                     ))}
-               </div>
-            </div>
-            <div className="ml-auto w-full overflow-hidden rounded-[28px] bg-[#2a2a2a] max-md:h-[50vh] md:h-[37.5vw] md:max-w-[45vw]">
-               <div className="h-full w-full">
-                  <MapComponent mode={selectedTab} data={data} />
+               <div className="md:h-100% ml-auto w-full overflow-hidden rounded-[28px] bg-[#2a2a2a] max-md:h-[50vh] md:max-w-[45vw]">
+                  <div className="h-full w-full">
+                     <MapComponent mode={selectedTab} data={data} />
+                  </div>
                </div>
             </div>
          </div>
-         <div className="mt-6 flex w-full items-center justify-center"></div>
       </div>
    );
 }

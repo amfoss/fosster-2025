@@ -46,7 +46,7 @@ export default function Hero() {
                   <p className="leading-[8.4vw] max-md:leading-[16.8vw]">
                      FOSSTER
                   </p>
-                  <p className="leading-[4vw] max-md:leading-[8vw]">2025</p>
+                  <p className="leading-[4vw] max-md:leading-[8vw]">2026</p>
                </div>
             </div>
          </div>

@@ -41,6 +41,10 @@ export const reasons = [
    {
       icon: 'userGroup',
       reason: {
+         highlight: {
+            small: 'forge your',
+            bold: 'Network',
+         },
          heading: 'Build Meaningful Connections',
          desc: 'Connect with open-source leaders and innovators who are shaping today’s technologies. Foster meaningful relationships and collaborate across various domains.',
       },
@@ -48,6 +52,10 @@ export const reasons = [
    {
       icon: 'eye',
       reason: {
+         highlight: {
+            small: 'unlock the',
+            bold: 'Insight',
+         },
          heading: 'Insights from Experts',
          desc: 'Learn from real-world projects and expert contributors. Discover how open source powers different domains while boosting your problem-solving and technical skills.',
       },
@@ -55,6 +63,10 @@ export const reasons = [
    {
       icon: 'blocks',
       reason: {
+         highlight: {
+            small: 'your moment to',
+            bold: 'Create',
+         },
          heading: 'Practice, Build, Contribute',
          desc: 'Dive into the world of Open Source with hands-on tools, workflows, and platforms. From Git to CI/CD and modern frameworks, apply your skills into real-world projects.',
       },
@@ -62,6 +74,10 @@ export const reasons = [
    {
       icon: 'compass',
       reason: {
+         highlight: {
+            small: 'where you can',
+            bold: 'Explore',
+         },
          heading: 'Discover Opportunities',
          desc: 'Explore open-source opportunities: From Internships and Collaborations to Careers. Discover how your contributions can grow to have a Global Impact',
       },
@@ -69,6 +85,10 @@ export const reasons = [
    {
       icon: 'globe',
       reason: {
+         highlight: {
+            small: 'be part of',
+            bold: 'Community',
+         },
          heading: 'Join the Global Community',
          desc: 'Join a diverse, global community built on collaboration. Celebrate contributions, share knowledge, and shape an inclusive, sustainable, impactful open-source ecosystem',
       },
@@ -83,7 +103,7 @@ export const whoCanAttendData = [
       iconPath: '/student-shape.svg',
    },
    {
-      title: 'DevOps',
+      title: 'Professionals',
       description:
          'Discover the latest open-source tools and best practices to streamline workflows and improve infrastructure management.',
       iconPath: '/devops-shape.svg',

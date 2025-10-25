@@ -26,9 +26,8 @@ export default function About() {
             </h1>
          </div>
          <div className="flex gap-[5vw]">
-            <div className="px-[2vw]"></div>
             <div className="flex flex-1 gap-x-[2.5vw] max-md:flex-col max-md:gap-y-[5vw]">
-               <p className="text-[4vw] leading-[1] tracking-tighter max-md:text-[8vw]">
+               <p className="pl-[2.5vw] text-[4vw] leading-[1] tracking-tighter max-md:text-[8vw]">
                   <span className="font-bold text-amber-200">FOSSter</span> was
                   created with a simple but powerful idea — to make open source
                   more{' '}
@@ -37,19 +36,20 @@ export default function About() {
                   </span>
                   <br />
                </p>
-               <div className="flex min-w-[30vw] flex-1 justify-end">
-                  <div className="-ml-[10vw] text-[1.2vw] text-gray-300 max-md:text-[4vw] md:max-w-[30vw]">
+               <div className="flex min-w-[39vw] flex-1 justify-end">
+                  <div className="text-[1.5vw] text-gray-300 max-md:text-[4vw]">
                      <p>
                         Born out of the amFOSS community at Amrita Vishwa
                         Vidyapeetham, FOSSter builds on over a decade of
                         experience nurturing open-source talent and organizing
-                        tech events with real impact.
+                        tech events with real, lasting impact.
                         <br />
                         In a time when open-source technologies drive everything
-                        from AI to infrastructure, FOSSter offers a focused
-                        space for contributors — from absolute beginners to
-                        industry veterans — to come together, learn, contribute,
-                        and grow.
+                        from AI to global infrastructure, FOSSter offers a
+                        focused and collaborative space for contributors — from
+                        absolute beginners to industry veterans — to come
+                        together, learn, contribute, innovate, and grow together
+                        as a vibrant, inclusive community.
                      </p>
                   </div>
                </div>

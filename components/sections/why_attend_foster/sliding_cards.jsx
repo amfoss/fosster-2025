@@ -98,9 +98,13 @@ export default function SlidingCards({ reason, icons }) {
             ref={cardMain}
             className="flex min-w-[49.5vw] transform rounded-[5vw] bg-[#a5a1ff] duration-100 will-change-transform max-md:hidden"
          >
-            <div className="flex flex-1 flex-col items-center justify-center space-y-[-0.75vw] text-black">
-               <p className="text-[1.2vw] font-semibold">we are</p>
-               <p className="text-[3.5vw] font-black italic">fosster</p>
+            <div className="flex flex-1 flex-col items-center justify-center space-y-[-0.25vw] text-black">
+               <p className="text-[1.2vw] font-semibold">
+                  {reason.reason.highlight.small}
+               </p>
+               <p className="text-[3.5vw] font-black italic">
+                  {reason.reason.highlight.bold}
+               </p>
             </div>
          </div>
       </div>

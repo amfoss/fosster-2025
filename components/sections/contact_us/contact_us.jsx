@@ -2,6 +2,7 @@ import CircularText from '@/components/ui/circular_text';
 import { GlobeOutline } from '@/components/svg/globe';
 import ArrowDown from '@/components/svg/arrow';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function ContactUs() {
    const links = [
@@ -29,7 +30,7 @@ export default function ContactUs() {
                            <span className="">+12 34556677</span>
                         </div>
                         <div className="rounded-full border border-[#fffc58] px-[1.5vw] py-[0.5vw] duration-150 hover:bg-[#fffc58] hover:text-[#1b1b1f] max-md:flex max-md:justify-center max-md:px-[4vw] max-md:py-[2vw]">
-                           <span className="">hair@gmail.com</span>
+                           <span className="">amritapurifoss@gmail.com</span>
                         </div>
                      </div>
 
@@ -81,23 +82,33 @@ export default function ContactUs() {
                </div>
 
                <div className="flex w-full overflow-hidden rounded-[5vw] bg-[#1b1b1f] p-[2.5vw] text-[5vw] max-md:rounded-full max-md:p-[10vw] max-md:text-[15vw]">
-                  <p className="ml-[-11vw] max-w-full leading-[1vw] font-black whitespace-nowrap text-[#313131] max-md:ml-[-40vw]">
-                     ✦ amFOSS&nbsp;
-                  </p>
-                  {[1, 2, 3, 4, 5, 6].map((elem, index) => (
-                     <p
-                        key={index}
-                        className="max-w-full leading-[1vw] font-black whitespace-nowrap text-[#313131]"
-                     >
+                  <div className="animate-scroll flex">
+                     <p className="ml-[-11vw] max-w-full leading-[1vw] font-black whitespace-nowrap text-[#313131] max-md:ml-[-40vw]">
                         ✦ amFOSS&nbsp;
                      </p>
-                  ))}
+                     {[1, 2, 3, 4, 5, 6].map((elem, index) => (
+                        <p
+                           key={index}
+                           className="max-w-full leading-[1vw] font-black whitespace-nowrap text-[#313131]"
+                        >
+                           ✦ amFOSS&nbsp;✦ <i>WOW</i>&nbsp;
+                        </p>
+                     ))}
+                  </div>
                </div>
             </div>
 
             <div className="flex w-full items-center justify-center rounded-[5vw] bg-[#fffc58] p-[2.5vw] text-[#1b1b1f] max-md:rounded-full max-md:p-[5vw] sm:w-1/4">
-               <div className="text-center">
-                  Maybe a overflow hidden stacks of carousals
+               <div className="flex items-center gap-x-[1vw] text-center">
+                  <Image
+                     src="/fosster-logo.png"
+                     width={1}
+                     height={1}
+                     alt="Picture of the author"
+                     className="size-[8vw] opacity-80 max-md:size-[16vw]"
+                     unoptimized
+                  />
+                  {/* <p className="md:hidden">fosster</p> */}
                </div>
             </div>
          </div>

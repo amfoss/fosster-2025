@@ -2,8 +2,8 @@
    "panel-discussions": {
       "slug": "panel-discussions",
       "title": "Panel Discussions",
-      "date": "Sept 5, 2025",
-      "description": "FOSSter 2025's Panel Discussions are live, moderated conversations featuring thought leaders discussing pivotal topics in open source. Expect interactive dialogue, cross-disciplinary insights, and vibrant debate — a format that moves far beyond solo talks.",
+      "date": "TBA",
+      "description": "FOSSter 2026's Panel Discussions are live, moderated conversations featuring thought leaders discussing pivotal topics in open source. Expect interactive dialogue, cross-disciplinary insights, and vibrant debate — a format that moves far beyond solo talks.",
       "sections": [
          {
             "type": "cards",
@@ -47,14 +47,14 @@
             ]
          }
       ],
-      "contact": "sponsors@fosster.in",
+      "contact": "amritapurifoss@gmail.com",
       "schedule": "Dates, times, and themes will be included in the official agenda."
    },
    "job-fair": {
       "slug": "job-fair",
       "title": "Job Fair",
-      "date": "Sept 12, 2025",
-      "description": "The Recruitment Zone at FOSSter 2025 is a hub where tech companies and FOSS enthusiasts meet. Held during peak networking hours, it offers rich face-to-face connections and career-changing opportunities for all.",
+      "date": "TBA",
+      "description": "The Recruitment Zone at FOSSter 2026 is a hub where tech companies and FOSS enthusiasts meet. Held during peak networking hours, it offers rich face-to-face connections and career-changing opportunities for all.",
       "sections": [
          {
             "type": "simple",
@@ -76,15 +76,15 @@
             ]
          }
       ],
-      "contact": "jobs@fosster.in",
+      "contact": "amritapurifoss@gmail.com",
       "schedule": "Job Fair timings will be shared in the agenda."
    },
    "open-source-101": {
       "slug": "open-source-101",
       "title": "Open Source 101",
-      "date": "Sept 14, 2025",
+      "date": "TBA",
       "description": "Understand what open source is, why it matters, and how to be a part of it — no experience needed.",
-      "ledBy": "AmFOSS — India's largest student-run tech club",
+      "ledBy": "amFOSS",
       "sections": [
          {
             "type": "cards",
@@ -135,7 +135,7 @@
    "speaker-sessions": {
       "slug": "speaker-sessions",
       "title": "Speaker Sessions",
-      "date": "Sept 16, 2025",
+      "date": "TBA",
       "description": "Absorb insights directly from seasoned professionals and core maintainers of key open-source projects.",
       "proposalCall": "We're now accepting proposals for 1-hour sessions. Submit your title, abstract, and bio.",
       "sections": [
@@ -175,7 +175,7 @@
    "workshops": {
       "slug": "workshops",
       "title": "Workshops",
-      "date": "Sept 17-18, 2025",
+      "date": "TBA",
       "description": "Gain real-world experience with open-source tools through hands-on exercises led by experts.",
       "sections": [
          {

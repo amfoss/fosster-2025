@@ -3,8 +3,16 @@ import Link from 'next/link';
 import { usePill } from '@/app/_contexts/pill';
 
 export default function Pill({ fill }) {
-   const { options, handleClick, selected, setSelected, persist, mode } =
-      usePill();
+   // persist - The selected option will be highlighted even after hovering over another option.
+   const {
+      options,
+      handleClick,
+      selected,
+      setSelected,
+      persist,
+      mode,
+      handleReload,
+   } = usePill();
    const [active, setActive] = useState(0);
    const containerRef = useRef(null);
    const highlightRef = useRef(null);
@@ -58,6 +66,11 @@ export default function Pill({ fill }) {
    };
 
    useEffect(() => {
+      handleReload();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, []);
+
+   useEffect(() => {
       handlePillHighlight();
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [active, options]);
@@ -86,6 +99,8 @@ export default function Pill({ fill }) {
       let observer;
       const endRef = document.getElementById('end');
       const onScroll = () => {
+         if (!containerRef.current) return;
+
          const rect = endRef.getBoundingClientRect();
          const linearPercent =
             rect.top <= 0

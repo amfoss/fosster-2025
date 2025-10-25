@@ -27,7 +27,7 @@ export default function EventPage({ event }) {
             return (
                <div
                   key={index}
-                  className="rounded-[2.5vw] bg-[#f1efef] p-[2.5vw] text-[1.3vw] text-[#00192e] max-md:p-[5vw] max-md:text-[4vw]"
+                  className="rounded-[2.5vw] bg-[#1b1b1f] p-[2.5vw] text-[1.3vw] text-white max-md:p-[5vw] max-md:text-[4vw]"
                >
                   <p className="mb-[0.5vw] text-[1vw] font-bold tracking-tight max-md:text-[4vw]">
                      {title}
@@ -47,7 +47,7 @@ export default function EventPage({ event }) {
             return (
                <div
                   key={index}
-                  className="rounded-[2.5vw] bg-[#1b1b1f] p-[2.5vw] text-[1.3vw] text-[#fff480] max-md:p-[5vw] max-md:text-[4vw]"
+                  className="rounded-[2.5vw] bg-[#1b1b1f] p-[2.5vw] text-[1.3vw] text-[#ffffff] max-md:p-[5vw] max-md:text-[4vw]"
                >
                   <p className="mb-[0.5vw] text-[1vw] font-bold tracking-tight max-md:text-[4vw]">
                      {title}
@@ -128,7 +128,7 @@ export default function EventPage({ event }) {
             </div>
          </div>
 
-         <div className="flex flex-col gap-y-[1vw] max-md:gap-y-[2.5vw]">
+         <div className="flex flex-col gap-y-[0.5vw] max-md:gap-y-[2.5vw]">
             {event.sections?.map((section, index) =>
                renderSection(section, index)
             )}

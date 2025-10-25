@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { scrollToHash } from '@/app/_utils/helpers';
 import Pill from './pill';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function NavBar() {
    const [fill, setFill] = useState(false);
@@ -130,20 +131,38 @@ export default function NavBar() {
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [pathname]);
 
+   useEffect(() => {
+      const nav = document.querySelector('nav');
+      if (nav) {
+         document.documentElement.style.setProperty(
+            '--nav-h',
+            `${nav.offsetHeight}px`
+         );
+      }
+   }, []);
+
    return (
       <>
          <nav
             className={`fixed top-0 z-50 flex w-full text-[1.3vw] max-md:text-[4vw] ${scrollDir == 'scrolling up' ? '' : '-translate-y-full'} transform duration-150`}
          >
-            <div className="flex flex-1 justify-start pt-[0.75vw] pl-[0.75vw] max-md:pt-[3vw] max-md:pl-[3vw]">
+            <div className="flex flex-1 justify-start pt-[0.75vw] pl-[0.75vw] max-md:py-[3vw] max-md:pl-[3vw]">
                <Link
                   href={'/#hero'}
-                  className="flex items-center justify-center rounded-full bg-gray-500/15 px-[1.75vw] py-[0.6vw] backdrop-blur-xl max-md:px-[4vw] max-md:py-[2vw]"
+                  className="flex items-center justify-center gap-x-[0.2vw] rounded-full backdrop-blur-xl max-md:px-[1.5vw]"
                >
-                  fosster
+                  <Image
+                     src="/fosster-logo.png"
+                     width={1}
+                     height={1}
+                     alt="Picture of the author"
+                     className="size-[4vw] invert max-md:size-[7vw]"
+                     unoptimized
+                  />
+                  {/* <p className="mr-[0.5vw] max-md:hidden">fosster</p> */}
                </Link>
             </div>
-            <div className="flex flex-1 items-center justify-center pt-[0.75vw] max-md:pt-[3vw] max-md:pr-[3vw]">
+            <div className="flex flex-1 items-center justify-center py-[0.75vw] max-md:py-[3vw] max-md:pr-[3vw]">
                {navLinks.map((elem, index) =>
                   elem.link === undefined ? (
                      <button

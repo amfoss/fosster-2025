@@ -4,6 +4,7 @@ import { usePill } from '@/app/_contexts/pill';
 import { useEffect } from 'react';
 import { Passes as passes } from '@/data/jsonData';
 import Check from '@/components/svg/check';
+
 export default function Pricing() {
    const { setOptions } = usePill();
    const colors = [
@@ -107,7 +108,7 @@ export default function Pricing() {
                   Adddtional Add Ons
                </h2>
                <p className="text-[1.2vw] max-md:text-[4vw] md:max-w-[60vw]">
-                  Enhance your FOSSter 2025 experience with hands-on learning!
+                  Enhance your FOSSter 2026 experience with hands-on learning!
                   Purchase access to individual workshops to dive deeper into
                   specific topics.
                </p>

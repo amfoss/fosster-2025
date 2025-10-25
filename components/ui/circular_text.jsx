@@ -13,7 +13,7 @@ export default function CircularText({
    const ref = useRef(null);
    const arrowRef = useRef(null);
    const linearPercent = useRef(0);
-   const ROTATE_STEP = 300;
+   const ROTATE_STEP = 2400;
 
    useEffect(() => {
       const onScroll = () => {
