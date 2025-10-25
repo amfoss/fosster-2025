@@ -117,7 +117,7 @@ export default function Pricing() {
                {[1].map((elem, index) => (
                   <div
                      key={index}
-                     className={`flex flex-1 transform flex-col gap-y-[1vw] rounded-[2.5vw] bg-[#a5a1ff] p-[2.5vw] text-[1.5vw] text-black duration-150 hover:scale-[0.95] max-md:rounded-[5vw] max-md:p-[5vw] max-md:text-[4vw]`}
+                     className={`flex flex-1 transform flex-col gap-y-[1vw] rounded-[2.5vw] bg-[#2d2e33] p-[2.5vw] text-[1.5vw] text-white duration-150 hover:scale-[0.95] max-md:rounded-[5vw] max-md:p-[5vw] max-md:text-[4vw]`}
                   >
                      <div className="flex flex-1 flex-col gap-y-[1vw] text-[1.2vw] max-md:text-[4vw]">
                         {addOns.map((elem, index) => (
@@ -125,7 +125,7 @@ export default function Pricing() {
                               key={index}
                               className="flex items-start max-md:gap-x-[2vw]"
                            >
-                              <div className="m-[0.4vw] flex min-w-[1.25vw] items-center rounded-full bg-black p-[0.25vw] text-white max-md:mt-[1.5vw] max-md:min-w-[4vw]">
+                              <div className="m-[0.4vw] flex min-w-[1.25vw] items-center rounded-full bg-[#181818] p-[0.25vw] text-white max-md:mt-[1.5vw] max-md:min-w-[4vw]">
                                  <Check />
                               </div>
                               <p>
